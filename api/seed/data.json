@@ -2,7 +2,7 @@
   {
     "species": "Snapper",
     "description": "A meaty, white fish. Great for grilling or the BBQ.",
-    "imageURL": "https:/loremflickr/300/300/snapper",
+    "imageURL": "https://loremflickr.com/300/300/snapper",
     "price": 20,
     "stock": 5,
     "caughtBy": "Barry"
@@ -10,7 +10,7 @@
   {
     "species": "Barramundi",
     "description": "Also known as 'Asian Sea Bass', lightly flavoured and versatile for different cooking styles.",
-    "imageURL": "https:/loremflickr/300/300/barramundi",
+    "imageURL": "https://loremflickr.com/300/300/barramundi",
     "price":23.50,
     "stock": 10,
     "caughtBy": "Pedro"
@@ -18,7 +18,7 @@
   {
     "species": "Salmon",
     "description": "Rich and full of healthy fats, great for grilling or pan-frying.",
-    "imageURL": "https:/loremflickr/300/300/salmon",
+    "imageURL": "https://loremflickr.com/300/300/salmon",
     "price": 21,
     "stock": 10,
     "caughtBy": "Barry"
@@ -26,7 +26,7 @@
   {
     "species": "Whitebait",
     "description": "Small and nutritious, great for deep-frying as a light snack.",
-    "imageURL": "https:/loremflickr/300/300/whitebait",
+    "imageURL": "https://loremflickr.com/300/300/whitebait",
     "price": 53,
     "stock": 10,
     "caughtBy": "Mary"
@@ -34,7 +34,7 @@
   {
     "species": "Flathead",
     "description": "Flaky white meat that's perfect for battering or grilling.",
-    "imageURL": "https:/loremflickr/300/300/flathead",
+    "imageURL": "https://loremflickr.com/300/300/flathead",
     "price": 15,
     "stock": 15,
     "caughtBy": "Mary"
@@ -42,7 +42,7 @@
   {
     "species": "Yellowfin Tuna",
     "description": "Rich read meat that is great grilled or fried in thick steaks.",
-    "imageURL": "https:/loremflickr/300/300/tuna_steak",
+    "imageURL": "https://loremflickr.com/300/300/tuna_steak",
     "price": 43,
     "stock": 3,
     "caughtBy": "Yolanda"
@@ -50,7 +50,7 @@
   {
     "species": "Gummy shark",
     "description": "Flakey and mild, perfect for fish & chips.",
-    "imageURL": "https:/loremflickr/300/300/gummy_shark",
+    "imageURL": "https://loremflickr.com/300/300/gummy_shark",
     "price": 15,
     "stock": 12,
     "caughtBy": "Pedro"
@@ -58,7 +58,7 @@
   {
     "species": "Ocean Trout",
     "description": "Similar to Salmon, great for grilling or pan-frying",
-    "imageURL": "https:/loremflickr/300/300/ocean_trout",
+    "imageURL": "https://loremflickr.com/300/300/ocean_trout",
     "price": 30,
     "stock": 6,
     "caughtBy": "Yolanda"
@@ -66,7 +66,7 @@
   {
     "species": "Smoked Salmon",
     "description": "Smoked with Mesquite wood chips, great in a bagel or on scrambled eggs.",
-    "imageURL": "https:/loremflickr/300/300/smoked_salmon",
+    "imageURL": "https://loremflickr.com/300/300/smoked_salmon",
     "price": 45,
     "stock": 15,
     "caughtBy": "Mary"
