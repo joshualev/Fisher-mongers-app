@@ -3,7 +3,7 @@ import { useState, useEffect} from 'react'
 import Products from './components/Products/Products';
 import Navbar from './components/Navbar/Navbar'
 import Show from './components/Show/Show'
-
+import Footer from './components/Footer/Footer'
 const App = () => {
   const [fishList, setFishList] = useState([])
 
@@ -36,6 +36,7 @@ const App = () => {
           />}
         />
       </Routes>
+      <Footer/>
         
     </div>
   )

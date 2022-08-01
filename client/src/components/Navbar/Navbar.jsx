@@ -1,3 +1,4 @@
+import { NavLink, Link } from 'react-router-dom'
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
@@ -16,6 +17,9 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import PhishingIcon from '@mui/icons-material/Phishing';
+import Button from '@mui/material/Button'
+
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -174,35 +178,21 @@ export default function PrimarySearchAppBar() {
   );
 
   return (
+    <>
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
+          <Badge badgeContent={ <PhishingIcon />} 
+           >
           <Typography
             variant="h6"
-            noWrap
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            Fish Mongers
+            Hooked
           </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+          </Badge>
+         
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
           <IconButton 
@@ -261,5 +251,43 @@ export default function PrimarySearchAppBar() {
       {renderMobileMenu}
       {renderMenu}
     </Box>
+    
+    <AppBar
+      position="static"
+      color="default"
+      elevation={0}
+    >
+      <Toolbar sx={{ flexWrap: 'wrap'}}>
+        <Box sx={{flexGrow: 1, 
+          justifyContent:'start'}}>
+        <Button
+         sx={{p: 3}} 
+          >Home
+        </Button>
+        <Button
+         sx={{p: 3}} >
+          Categories
+        </Button>
+        <Button
+         sx={{p: 3}} >
+          Specials
+        </Button>
+        <Button
+         sx={{p: 3}} >
+          Whats on
+        </Button>
+        </Box>
+        <Search>
+          <SearchIconWrapper>
+            <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+               placeholder="Search…"
+              inputProps={{ 'aria-label': 'search' }}
+              />
+        </Search>
+      </Toolbar>
+    </AppBar>
+    </>
   );
 }
