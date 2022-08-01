@@ -9,7 +9,7 @@ const whitelist = [
     'http://localhost:4001'
 ]
 
-const userController = require("./controllers/Users")
+const usersController = require("./controllers/Users")
 const fishController = require('./controllers/Fish')
 
 app.use(express.json())
@@ -24,7 +24,7 @@ app.use(cors({
     }
 }))
 
-app.use('/user', userController)
+app.use('/users', usersController)
 app.use('/fish', fishController)
 
 mongoose.connect(dbURL, () => {
