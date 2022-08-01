@@ -7,33 +7,40 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Divider } from '@mui/material';
 
 
 
-const Product = ( { product } ) => {
+// <Typography variant="p" color="textSecondary">
+// Caught by {fish.caughtBy}
+// </Typography>
+const Product = ( {fish} ) => {
+    console.log(fish)
   return (
-    <Card sx={{ maxWidth: '100%' }}>
-        <CardMedia sx={{height: 0, paddingTop: '56.25%', }} image={product.image} title={product.name}/>
+    <>
+    <Card key={fish._id} sx={{ maxWidth: '100%' }}>
+        <CardMedia sx={{height: 0, paddingTop: '56.25%', }} image={fish.imageURL} title={fish.species}/>
         <CardContent sx={{justifyContent: 'space-between', display:'flex'}}>
             <Box sx ={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             <Typography variant="h5" gutterBottom>
-                {product.name}
+                {fish.species}
             </Typography>
-            <Typography variant="h5" gutterBottom>
-                {product.price}
+            <Typography variant="p" color="textSecondary" gutterBottom>
+                {fish.stock} left
             </Typography>
             </Box>
-            <Typography variant="body2" color="textSecondary">
-                {product.description}
+            <Typography variant="h5" gutterBottom>
+                ${fish.price}
             </Typography>
         </CardContent>
         <CardActions disableSpacing sx={{display: 'flex',
         justifyContent: 'flex-end'}}>
             <IconButton aria-label="Add to Cart">
-                < ShoppingCartIcon />
+            < ShoppingCartIcon />
             </IconButton>
         </CardActions>
     </Card>
+    </>
   )
 }
 
