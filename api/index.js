@@ -9,6 +9,7 @@ const whitelist = [
     'http://localhost:4001'
 ]
 
+const usersController = require("./controllers/Users")
 const fishController = require('./controllers/Fish')
 
 app.use(express.json())
@@ -23,7 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 //     }
 // }))
 
-
+app.use('/users', usersController)
 app.use('/fish', fishController)
 
 mongoose.connect(dbURL, () => {
