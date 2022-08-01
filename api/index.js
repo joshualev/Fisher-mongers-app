@@ -14,15 +14,15 @@ const fishController = require('./controllers/Fish')
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({
-    origin: (origin, cb) => {
-        if (whitelist.indexOf(origin) !== -1) {
-            cb(null, true)
-        } else {
-            cb(new Error())
-        }
-    }
-}))
+// app.use(cors({
+//     origin: (origin, cb) => {
+//         if (whitelist.indexOf(origin) !== -1) {
+//             cb(null, true)
+//         } else {
+//             cb(new Error())
+//         }
+//     }
+// }))
 
 app.use('/users', usersController)
 app.use('/fish', fishController)

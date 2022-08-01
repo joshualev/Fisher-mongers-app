@@ -10,9 +10,9 @@ const dbURL = process.env.MONGODB_URL
 mongoose.connect(dbURL, async () => {
   console.log('Connected to Fish db')
 
-  // console.log('Resetting Fish collection')
-  // await Fish.collection.drop()
-  // console.log('Fish collection dropped')
+  console.log('Resetting Fish collection')
+  await Fish.collection.drop()
+  console.log('Fish collection dropped')
 
   console.log('Inserting seed data')
   const insertedFish = await Fish.insertMany(dummyFish)
