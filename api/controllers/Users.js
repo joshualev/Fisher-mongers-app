@@ -5,14 +5,33 @@ const User = require("../models/Users")
 
 const userRouter = express.Router()
 
-// localhost:4000/users/signup
+// GET / route
 // Remember to DROP your users db on mongoDB :)
-userRouter.get("/signup", async (req, res) => {
+userRouter.get("/", async (req, res) => {
   try {
-    const users = await User.find({}).exec()
-    res.status(200).json(users)
+    const user = await User.find(req.body).exec()
+    res.status(200).json(user)
   } catch (error) {
     res.status(500).json({errorMessage: error.Message})
+  }
+})
+
+// POST / route (New user)
+// (You will need bcrypt package)
+userRouter.post("/", async (req, res) => {
+
+  // // Uncomment hashing before deploying!
+  // req.body.password = bcrypt.hashSync(
+  //   req.body.password,
+  //   bcrypt.genSaltSync()
+  // )
+
+  try {
+    const res = await User.create(req.body)
+    const user = res.json()
+    res.status(200).json(user)
+  } catch (error) {
+    res.status(500).json({ errorMessage: error.Message })
   }
 })
 
