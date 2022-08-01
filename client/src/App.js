@@ -2,6 +2,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import { useState, useEffect} from 'react'
 import Products from './components/Products/Products';
 import Navbar from './components/Navbar/Navbar'
+import Show from './components/Show/Show'
 
 const App = () => {
   const [fishList, setFishList] = useState([])
@@ -10,7 +11,6 @@ const App = () => {
     const url = 'http://localhost:4000/fish'
     const res = await fetch(url)
     const data = await res.json()
-    // console.log(data)
     setFishList(data)
   }
 
@@ -18,7 +18,6 @@ const App = () => {
   useEffect(() => {
     getFish()
   },[])
-  // console.log(fishList)
   return (
     <div>
       <Navbar/>
@@ -26,9 +25,14 @@ const App = () => {
       <Routes>
         <Route 
           path='/' 
-          element={fishList && 
-          <Products
+          element={fishList && <Products
             fishList={fishList} 
+          />}
+        />
+        <Route 
+          path='/:fishID' 
+          element={fishList && <Show
+            fishList={fishList}
           />}
         />
       </Routes>
