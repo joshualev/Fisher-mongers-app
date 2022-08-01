@@ -1,6 +1,7 @@
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import { useState, useEffect} from 'react'
 import Products from './components/Products/Products';
+import Checkout from './components/Checkout/Checkout'
 import Navbar from './components/Navbar/Navbar'
 import Show from './components/Show/Show'
 import Footer from './components/Footer/Footer'
@@ -32,6 +33,12 @@ const App = () => {
         <Route 
           path='/:fishID' 
           element={fishList && <Show
+            fishList={fishList}
+          />}
+        />
+        <Route 
+          path='/checkout' 
+          element={fishList && <Checkout
             fishList={fishList}
           />}
         />

@@ -22,7 +22,7 @@ const Products = ({fishList}) => {
                     gutterBottom
                 >
                 <Badge 
-                    badgeContent={ <PhishingIcon sx={{mt:1.5, mr:0.2}} />} >
+                    badgeContent={ <PhishingIcon sx={{mt:1.2, mr:1}} />} >
                     <Typography
                         variant="h2"
                         >
