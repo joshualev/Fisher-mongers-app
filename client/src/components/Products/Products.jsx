@@ -1,13 +1,44 @@
 import React from 'react'
 import Grid from '@mui/material/Grid';
 import Product from './Product/Product'
-
-
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import PhishingIcon from '@mui/icons-material/Phishing';
+import Badge from '@mui/material/Badge'
 const Products = ({fishList}) => {
-    console.log(fishList)
   return (
       <>
       <main>
+          {/* Hero unit */}
+        <Container 
+            disableGutters 
+            maxWidth="md" 
+            sx={{ pt: 3, pb: 6, justifyContent:'center'}}>
+                <Typography
+                    component="h1"
+                    variant="h2"
+                    align="center"
+                    color="text.primary"
+                    gutterBottom
+                >
+                <Badge 
+                    badgeContent={ <PhishingIcon sx={{mt:1.5, mr:0.2}} />} >
+                    <Typography
+                        variant="h2"
+                        >
+                        Hooked
+                    </Typography>
+                </Badge>
+                    </Typography>
+                    <Typography 
+                        variant="h5" 
+                        align="center" 
+                        color="text.secondary" 
+                        component="p">
+                        Welcome to Hooked! Here you will find only the freshest of seafood supplied by our local Aussie fish mongers!
+                    </Typography>     
+        </Container>
+      {/* End hero unit */}
         <Grid sx={{p:10}}
         container 
         justify="center" 
@@ -21,6 +52,7 @@ const Products = ({fishList}) => {
             })}
         </Grid>
       </main>
+      
       </>
   )
 }
