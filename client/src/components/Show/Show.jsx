@@ -13,7 +13,7 @@ import Container from '@mui/material/Container';
 
 const Show = (fishList) => {
 
-  // fishList props not flowing in fast enough for render, keeps breaking!
+  // // fishList props not flowing in fast enough for render, keeps breaking!
 
   // const params = useParams()
   // const fish = fishList.find((f) => f._id === params.fishID)
@@ -30,7 +30,7 @@ const Show = (fishList) => {
   }
 
   return (
-    <>
+    <div>
       {/* Hero unit */}
       <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
         <Typography
@@ -66,7 +66,7 @@ const Show = (fishList) => {
           <CardContent>
             <CardMedia
               sx={{ height: 0, paddingTop: '56.25%', }}
-              image="https://www.fishfiles.com.au/-/media/fishfiles/images/preparing-seafood/110830_erd_snapper__0374sm.ashx?h=453&w=1000&la=en&hash=1D1B5A009344F3AD329992DAD21F959C16B17529"
+              image={ fish.imageURL }
               title="Fish Species"
             />
             <Box
@@ -110,7 +110,7 @@ const Show = (fishList) => {
       </Container>
 
 
-    </>
+    </div>
   )
 }
 
