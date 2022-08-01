@@ -19,6 +19,7 @@ const Show = (fishList) => {
   // const fish = fishList.find((f) => f._id === params.fishID)
   // console.log(fish);
 
+  // Temporary placeholder
   const fish = {
     caughtBy: "Barry",
     description: "A meaty, white fish. Great for grilling or the BBQ.",
@@ -93,13 +94,13 @@ const Show = (fishList) => {
             justifyContent: 'center'
           }}>
             <Card sx={{ mb: 1 }}>
-              <Button sx={{ pt: 1, pb: 1 }} variant="contained" size="medium" color="primary">-</Button>
+              <Button sx={{ pt: 1, pb: 1 }} variant="outlined" size="medium" color="primary">-</Button>
               <Typography variant="p" sx={{ p: 2 }}>
                 6
               </Typography>
-              <Button sx={{ pt: 1, pb: 1 }} variant="contained" size="medium" color="primary">+</Button>
+              <Button sx={{ pt: 1, pb: 1 }} variant="outlined" size="medium" color="primary">+</Button>
               <div>
-                <Button sx={{ mt: 1, width: '100%' }} variant="contained" color="warning">Add to cart</Button>
+                <Button sx={{ mt: 1, width: '100%' }} variant="contained" color="primary">Add to cart</Button>
               </div>
             </Card>
           </CardActions>
