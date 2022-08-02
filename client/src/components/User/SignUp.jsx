@@ -28,12 +28,12 @@ const SignUp = () => {
     })
     const newData = await res.json()
     console.log(newData);
-    navigate("/")
+    navigate("/signin")
   };
 
   return (
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
+      <CssBaseline />s
       <Box
         sx={{
           marginTop: 8,

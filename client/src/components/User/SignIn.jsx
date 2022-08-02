@@ -12,14 +12,22 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
-export default function SignIn() {
-  const handleSubmit = (event) => {
+const SignIn = (props) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      username: data.get('username'),
-      password: data.get('password'),
-    });
+    const newUser = {
+      username: data.get("username"),
+      password: data.get("password")
+    }
+    const res = await fetch("users/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newUser)
+    })
+    const newData = await res.json()
+    console.log(newData.msg);
+    props.handleLogin(newData.authorised)
   };
 
   return (
@@ -64,24 +72,24 @@ export default function SignIn() {
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
-          <NavLink to='/'>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In
-            </Button>
-          </NavLink>
-          <NavLink to="/signup">
-            <Link variant="body2">
-              Don't have an account? Sign Up
-            </Link>
-          </NavLink>
+
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            Sign In
+          </Button>
+
+          <Link variant="body2">
+            Don't have an account? Sign Up
+          </Link>
+
         </Box>
       </Box>
     </Container>
   );
 }
 
+export default SignIn
