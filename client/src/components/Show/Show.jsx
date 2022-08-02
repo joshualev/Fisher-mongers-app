@@ -50,7 +50,7 @@ const Show = ({ fishList }) => {
       </Container> */}
       {/* End hero unit */}
 
-      <Container maxWidth="md" component="main" sx={{ width: '50%', align: 'center', justifyContent: 'center' }}>
+      <Container maxWidth="md" component="main" sx={{ width: '50%', align: 'center', justifyContent: 'center', pt:10, pb:10}}>
         <Card >
           <CardHeader
             title={fish.species}
@@ -79,6 +79,7 @@ const Show = ({ fishList }) => {
                 justifyContent: 'center',
                 alignItems: 'space-around',
                 mb: 2,
+                mt:1
               }}
             >
               <Typography variant="body1" color="text.primary">
@@ -97,11 +98,11 @@ const Show = ({ fishList }) => {
             justifyContent: 'center'
           }}>
             <Card sx={{ mb: 1 }}>
-              <Button onClick={handleClick} name="minus" sx={{ pt: 1, pb: 1 }} variant="outlined" size="medium" color="primary">-</Button>
+              <Button onClick={handleClick} name="minus"  variant="outlined" size="medium" color="primary">-</Button>
               <Typography variant="p" sx={{ p: 2 }}>
                 {counter}
               </Typography>
-              <Button onClick={handleClick} name="plus" sx={{ pt: 1, pb: 1 }} variant="outlined" size="medium" color="primary">+</Button>
+              <Button onClick={handleClick} name="plus" variant="outlined" size="medium" color="primary">+</Button>
               <div>
                 <Button onClick={handleClick} name="add" sx={{ mt: 1, width: '100%' }} variant="contained" color="primary">Add to cart</Button>
               </div>
