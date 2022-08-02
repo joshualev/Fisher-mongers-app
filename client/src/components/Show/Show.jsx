@@ -110,6 +110,7 @@ const Show = ({ fishList }) => {
       </Container>
     </div>
   )
+
 }
 
 export default Show

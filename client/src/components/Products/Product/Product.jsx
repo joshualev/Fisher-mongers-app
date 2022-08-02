@@ -6,8 +6,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-
-
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import IconButton from '@mui/material/IconButton';
 const Product = ( {fish} ) => {
   return (
     <>
@@ -54,11 +54,14 @@ const Product = ( {fish} ) => {
                     color="inherit">+
                 </Button>
                 <div>
-                <Button 
-                    sx={{mt:1, p:1, width:'100%'}} 
-                    variant="contained" 
-                    color="primary">Add to cart
-                </Button>
+                 <IconButton 
+                 size="medium" 
+                 variant="contained" 
+                 color="primary"
+                 >
+                      <ShoppingCartIcon sx={{mr:1}}/>
+                      Add to cart
+               </IconButton>
                 </div>
             </Card>
         </CardActions>
