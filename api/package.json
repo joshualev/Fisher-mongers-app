@@ -1,6 +1,7 @@
 {
   "name": "api",
   "version": "1.0.0",
+  "proxy": "http://localhost:4000",
   "description": "Fish Mongers App",
   "main": "index.js",
   "scripts": {
