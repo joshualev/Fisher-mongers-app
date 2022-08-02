@@ -125,7 +125,9 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+     
       <MenuItem>
+      <Link to='/cart'>
       <IconButton 
           size="large" 
           aria-label="Show cart items" 
@@ -137,6 +139,7 @@ export default function PrimarySearchAppBar() {
           </Badge>
         </IconButton>
       <p>Cart</p>
+      </Link>
       </MenuItem>
       <MenuItem>
         <IconButton 
@@ -196,6 +199,7 @@ export default function PrimarySearchAppBar() {
          
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+          <Link to='/cart'>
           <IconButton 
             size="large" 
             aria-label="Show cart items" 
@@ -206,6 +210,7 @@ export default function PrimarySearchAppBar() {
                 <ShoppingCartIcon/>
             </Badge>
           </IconButton>
+          </Link>
             <IconButton 
               size="large" 
               aria-label="show 4 new mails" 
@@ -264,7 +269,7 @@ export default function PrimarySearchAppBar() {
             flexGrow: 1, 
             justifyContent:'start'
             }}>
-          <NavLink to="/"
+          <NavLink to="/" style={{ textDecoration: 'none' }}
             >
               <Button sx={{p: 3}}>
               Home
