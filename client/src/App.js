@@ -1,5 +1,5 @@
 import { Routes, Route, useNavigate } from 'react-router-dom'
-import { useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import Products from './components/Products/Products'
 import Checkout from './components/Checkout/Checkout'
 import Navbar from './components/Navbar/Navbar'
@@ -8,6 +8,7 @@ import Create from './components/Create/Create'
 import Footer from './components/Footer/Footer'
 import SignIn from './components/User/SignIn'
 import SignUp from './components/User/SignUp'
+import Edit from './components/Edit/Edit'
 import SignOut from './components/User/SignOut'
 import Cart from './components/Checkout/Cart/Cart'
 
@@ -16,12 +17,17 @@ const App = () => {
   const [authorised, setAuthorised] = useState(null)
   const navigate = useNavigate()
 
-  const getFish = async() => {
+  const getFish = async () => {
     const url = 'http://localhost:4000/fish'
     const res = await fetch(url)
     const data = await res.json()
     setFishList(data)
   }
+
+  useEffect(() => {
+    getFish()
+  }, [])
+
 
   const handleAuth = (authed) => {
     setAuthorised(authed)
@@ -46,58 +52,118 @@ const App = () => {
 
   useEffect(() => {
     getFish()
-  },[])
+  }, [])
+
+  const handleNewFish = async (createdFish) => {
+    if (createdFish.imageURL === "") {
+      createdFish.imageURL = undefined
+    }
+    // console.log("New fish added:", createdFish)
+    const res = await fetch("http://localhost:4000/fish", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(createdFish)
+    })
+    // console.log(res.ok)  
+    if (res.ok) {
+      const newFish = await res.json()
+      // console.log(newFish)
+      setFishList([
+        ...fishList,
+        newFish
+      ])
+      navigate("/")
+    } else {
+      console.log("error adding the new fish")
+    }
+  }
+
+  const handleEdit = async (editedFish) => {
+    // console.log("Edited fish: ", editedFish)
+    const res = await fetch(`http://localhost:4000/fish/${editedFish._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(editedFish)
+    })
+    // console.log(res.ok)
+    if (res.ok) {
+      const updatedFish = await res.json()
+      // console.log(updatedFish)
+      setFishList([
+        ...fishList,
+        updatedFish
+      ])
+    } else {
+      console.log("error updating the fish")
+    }
+  }
 
   return (
     <div>
-      {fishList &&
+      { fishList &&
         <Navbar fishList={fishList}/>
       }
 
       <Routes>
-        <Route 
-          path='/' 
+        <Route
+          path='/'
           element={fishList && <Products
-            fishList={fishList} 
+            fishList={fishList}
           />}
         />
-        <Route 
-          path='/:fishID' 
+        <Route
+          path='/:fishID'
           element={fishList && <Show
             fishList={fishList}
           />}
         />
-        <Route 
+        <Route
           path="/new"
-          element= {<Create />}
+          element={<Create handleNewFish={handleNewFish} />}
         />
         <Route
-          path='/cart' 
+          path='/cart'
           element={fishList && <Cart
             fishList={fishList}
           />}
         />
         <Route
-          path='/checkout' 
+          path='/checkout'
           element={fishList && <Checkout
             fishList={fishList}
           />}
         />
-         <Route 
-          path='/signin' 
-          element={ <SignIn handleLogin={handleAuth} />}
+        <Route
+          path='/signin'
+          element={<SignIn />}
         />
-        <Route 
-          path='/signup' 
-          element={ <SignUp handleRegister={handleAuth}/>}
+        <Route
+          path='/signup'
+          element={<SignUp />}
         />
-        <Route 
+        <Route
+          path='/edit/:fishID'
+          element={fishList && <Edit fishList={fishList} handleEdit={handleEdit} />}
+        />
+        <Route
+          path='/signin'
+          element={<SignIn handleLogin={handleAuth} />}
+        />
+        <Route
+          path='/signup'
+          element={<SignUp handleRegister={handleAuth} />}
+        />
+        <Route
           path="/signout"
-          element={<SignOut handleSignout={handleLogout}/>}
+          element={<SignOut handleSignout={handleLogout} />}
         />
       </Routes>
-      <Footer/>
-        
+      <Footer />
+
     </div>
   )
 }
