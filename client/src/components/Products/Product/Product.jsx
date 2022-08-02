@@ -23,7 +23,7 @@ const Product = ( {fish} ) => {
       } else if (event.target.name === "minus" && counter > 0) {
         setCounter(counter - 1)
       } else if (event.target.name === "add") {
-        console.log("Clicked 'Add to cart'");
+        console.log("Clicked 'ALindd to cart'");
       }
     }
   return (
@@ -45,9 +45,9 @@ const Product = ( {fish} ) => {
                 ${fish.price}
             </Typography>
         </CardContent>
-        <CardActions disableSpacing sx={{display: 'flex',
+        <CardActions disableSpacing sx={{
         justifyContent: 'center'}}>
-            <Card sx={{mb:1}}>
+            <div sx={{mb:1}}>
                 <Button  
                     sx={{pt:0.25, pb:0.25}} 
                     variant="contained" 
@@ -59,7 +59,7 @@ const Product = ( {fish} ) => {
                 </Button>
                 <Typography 
                     variant="p" 
-                    sx={{p:2}}>
+                    sx={{p:2.3}}>
                         {counter}
                 </Typography>
                 <Button 
@@ -71,16 +71,17 @@ const Product = ( {fish} ) => {
                     name="plus">+
                 </Button>
                 <div>
-                 <IconButton 
-                 size="medium" 
+                 <Button 
+                 size="large" 
                  variant="contained" 
                  color="primary"
+                 sx={{my:1}}
                  >
                       <ShoppingCartIcon sx={{mr:1}}/>
                       Add to cart
-               </IconButton>
+               </Button>
                 </div>
-            </Card>
+            </div>
         </CardActions>
     </Card>
     </>
