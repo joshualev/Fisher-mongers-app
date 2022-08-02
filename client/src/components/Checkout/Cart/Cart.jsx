@@ -15,7 +15,7 @@ const Cart = ( { fishList }) => {
     <>
     <Container align="center" sx={{mt:3}}>
         <Grid sx={{width:'320px'}}>
-        <CardActionArea component="a" href="#">
+        <CardActionArea>
             <Card sx={{ display: 'flex' }}>
             <CardContent >
                 <Typography component="h2" variant="h5">
