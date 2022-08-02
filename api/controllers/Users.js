@@ -5,33 +5,76 @@ const User = require("../models/Users")
 
 const userRouter = express.Router()
 
-// GET / route
-// Remember to DROP your users db on mongoDB :)
-userRouter.get("/", async (req, res) => {
+userRouter.post("/register", async (req, res) => {
+  req.body.password = bcrypt.hashSync(
+    req.body.password,
+    bcrypt.genSaltSync()
+  )
+
   try {
-    const user = await User.find(req.body).exec()
-    res.status(200).json(user)
+    const user = await User.create(req.body)
+    req.session.currentUser = user
+    res.status(200).json({
+      msg: "Registered successfully",
+      authorised: true,
+      user: {
+        id: user._id,
+        username: user.username,
+        isAdmin: user.isAdmin
+      }
+    })
   } catch (error) {
-    res.status(500).json({errorMessage: error.Message})
+    console.log(error)
+    res.status(400).json({
+      msg: "Username already exists"
+    })
   }
 })
 
-// POST / route (New user)
-// (You will need bcrypt package)
-userRouter.post("/", async (req, res) => {
+userRouter.post("/login", async (req, res) => {
+  const { username, password } = req.body
+  const user = await User.findOne({ username: username }).exec()
 
-  // // Uncomment hashing before deploying!
-  // req.body.password = bcrypt.hashSync(
-  //   req.body.password,
-  //   bcrypt.genSaltSync()
-  // )
+  if (!user) {
+    return res.status(400).json({
+      msg: "Username or password is incorrect"
+    })
+  }
 
-  try {
-    const res = await User.create(req.body)
-    const user = res.json()
-    res.status(200).json(user)
-  } catch (error) {
-    res.status(500).json({ errorMessage: error.Message })
+  const passwordIsCorrect = bcrypt.compareSync(password, user.password)
+
+  if (!passwordIsCorrect) {
+    return res.status(400).json({
+      msg: "Username or password is incorrect"
+    })
+  } else {
+    req.session.currentUser = user
+    res.status(200).json({
+      msg: "Successful login",
+      authorised: true
+    })
+  }
+})
+
+userRouter.post("/logout", async (req, res) => {
+  req.session.destroy(() => {
+    res.status(200).json({
+      msg: "User logged out"
+    })
+  })
+})
+
+userRouter.get("/isauthorised", async (req, res) => {
+  if (req.session.currentUser) {
+    return res.status(200).json({
+      msg: "User is logged in",
+      authorised: true
+    })
+  } else {
+    return res.status(200).json({
+      msg: "User is logged out",
+      authorised: false
+    })
   }
 })
 
