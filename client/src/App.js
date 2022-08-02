@@ -50,10 +50,6 @@ const App = () => {
     checkIfLoggedIn()
   }, [])
 
-  useEffect(() => {
-    getFish()
-  }, [])
-
   const handleNewFish = async (createdFish) => {
     if (createdFish.imageURL === "") {
       createdFish.imageURL = undefined
@@ -97,9 +93,22 @@ const App = () => {
         ...fishList,
         updatedFish
       ])
+      navigate(`/${updatedFish._id}`)
     } else {
       console.log("error updating the fish")
     }
+  }
+
+  const handleDelete = async (fishIDToDelete) => {
+    // console.log("delete fish: ", fishIDToDelete)
+    const res = await fetch(`http://localhost:4000/fish/${fishIDToDelete}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type" : "application/json"
+      }
+    })
+    setFishList(fishList.filter((fish) => fish._id !== fishIDToDelete))
+    navigate("/")
   }
 
   return (
@@ -117,6 +126,7 @@ const App = () => {
           path='/:fishID'
           element={fishList && <Show
             fishList={fishList}
+            handleDelete={handleDelete}
           />}
         />
         <Route
