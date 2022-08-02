@@ -8,6 +8,7 @@ import Create from './components/Create/Create'
 import Footer from './components/Footer/Footer'
 import SignIn from './components/User/SignIn'
 import SignUp from './components/User/SignUp'
+import Cart from './components/Checkout/Cart/Cart'
 const App = () => {
   const [fishList, setFishList] = useState(null)
 
@@ -42,6 +43,12 @@ const App = () => {
         <Route 
           path="/new"
           element= {<Create />}
+        />
+        <Route
+          path='/cart' 
+          element={fishList && <Cart
+            fishList={fishList}
+          />}
         />
         <Route
           path='/checkout' 
