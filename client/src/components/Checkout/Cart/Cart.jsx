@@ -10,12 +10,12 @@ import Grid from '@mui/material/Grid'
 import CardActionArea from '@mui/material/CardActionArea';
 
 
-const Cart = ( { fishList } ) => {
+const Cart = ( { fishList }) => {
   return (
     <>
     <Container align="center" sx={{mt:3}}>
         <Grid sx={{width:'320px'}}>
-        <CardActionArea>
+        <CardActionArea component="a" href="#">
             <Card sx={{ display: 'flex' }}>
             <CardContent >
                 <Typography component="h2" variant="h5">
