@@ -44,7 +44,7 @@ const App = () => {
     console.log(fishID, quantity);
     const newItem = { [fishID]: quantity }
     console.log(newItem);
-    setCart()
+    setCart([newItem]) // <- Why not working?
     console.log(cart);
   }
 
