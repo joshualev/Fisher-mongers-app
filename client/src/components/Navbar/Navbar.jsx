@@ -10,7 +10,6 @@ import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
@@ -258,24 +257,29 @@ export default function PrimarySearchAppBar() {
       elevation={0}
     >
       <Toolbar sx={{ flexWrap: 'wrap'}}>
-        <Box sx={{flexGrow: 1, 
-          justifyContent:'start'}}>
-        <Button
-         sx={{p: 3}} 
-          >Home
-        </Button>
-        <Button
-         sx={{p: 3}} >
-          Categories
-        </Button>
-        <Button
-         sx={{p: 3}} >
-          Specials
-        </Button>
-        <Button
-         sx={{p: 3}} >
-          Whats on
-        </Button>
+        <Box 
+          sx={{
+            flexGrow: 1, 
+            justifyContent:'start'
+            }}>
+          <NavLink to="/"
+            >
+              <Button sx={{p: 3}}>
+              Home
+              </Button>
+          </NavLink>
+          <Button
+          sx={{p: 3}} >
+            Categories
+          </Button>
+          <Button
+          sx={{p: 3}} >
+            Specials
+          </Button>
+          <Button
+          sx={{p: 3}} >
+            Whats on
+          </Button>
         </Box>
         <Search>
           <SearchIconWrapper>

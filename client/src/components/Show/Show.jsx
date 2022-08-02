@@ -49,6 +49,7 @@ const Show = ({ fishList }) => {
         </Typography>
       </Container> */}
       {/* End hero unit */}
+
       <Container maxWidth="md" component="main" sx={{ width: '50%', align: 'center', justifyContent: 'center' }}>
         <Card >
           <CardHeader

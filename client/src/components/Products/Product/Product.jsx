@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box'
@@ -8,18 +9,29 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import IconButton from '@mui/material/IconButton';
+import { useState, useEffect } from "react"
 const Product = ( {fish} ) => {
+    const [counter, setCounter] = useState()
+  
+    useEffect(() => {
+      setCounter(0)
+    }, [])
+  
+    const handleClick = (event) => {
+      if (event.target.name === "plus" && counter < fish.stock ) {
+        setCounter(counter + 1)
+      } else if (event.target.name === "minus" && counter > 0) {
+        setCounter(counter - 1)
+      } else if (event.target.name === "add") {
+        console.log("Clicked 'Add to cart'");
+      }
+    }
   return (
     <>
     <Card key={fish._id} sx={{ maxWidth: '100%' }}>
-        {/* <div style={{ position: "relative" }}> */}
-        <CardMedia sx={{height: 0, paddingTop: '56.25%', }} image={fish.imageURL} title={fish.species}/>
-            {/* <div style={{position:"absolute", color:"white", top:10, left: "20%", transform:"translateX(-50%)",}}>        
-                <Typography variant="body2" sx={{color: palette.common.white}} >
-                    Caught by {fish.caughtBy}
-                </Typography>
-            </div>
-        </div> */}
+        <Link to={fish._id}>
+            <CardMedia sx={{height: 0, paddingTop: '56.25%', }} image={fish.imageURL} title={fish.species}/>
+        </Link>
         <CardContent sx={{justifyContent: 'space-between', display:'flex'}}>
             <Box sx ={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             <Typography variant="h5" gutterBottom>
@@ -40,18 +52,23 @@ const Product = ( {fish} ) => {
                     sx={{pt:0.25, pb:0.25}} 
                     variant="contained" 
                     size="medium" 
+                    onClick={handleClick}
+                    name="minus"
                     color="inherit">-
+                   
                 </Button>
                 <Typography 
                     variant="p" 
                     sx={{p:2}}>
-                        6
+                        {counter}
                 </Typography>
                 <Button 
                     sx={{pt:0.25, pb:0.25}} 
                     variant="contained"  
                     size="medium" 
-                    color="inherit">+
+                    color="inherit"
+                    onClick={handleClick}
+                    name="plus">+
                 </Button>
                 <div>
                  <IconButton 
