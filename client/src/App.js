@@ -5,7 +5,7 @@ import Navbar from './components/Navbar/Navbar'
 import Show from './components/Show/Show'
 import Footer from './components/Footer/Footer'
 const App = () => {
-  const [fishList, setFishList] = useState([])
+  const [fishList, setFishList] = useState(null)
 
   const getFish = async() => {
     const url = 'http://localhost:4000/fish'
