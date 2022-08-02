@@ -167,7 +167,7 @@ export default function PrimarySearchAppBar(props) {
       color="default"
       elevation={0}
     >
-      <Toolbar sx={{ display:'flex',flexWrap: 'wrap'}}>
+      <Toolbar sx={{ flexWrap: 'wrap'}}>
         <Box 
           sx={{
             flexGrow: 1, 

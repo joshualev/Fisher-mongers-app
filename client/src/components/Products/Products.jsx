@@ -7,7 +7,7 @@ import PhishingIcon from '@mui/icons-material/Phishing';
 import Badge from '@mui/material/Badge'
 import Searchbar from '../Navbar/Searchbar'
 import { useState, useEffect } from "react"
-const Products = ( { fishList} ) => {
+const Products = ({fishList}) => {
   return (
       <>
       <main>
