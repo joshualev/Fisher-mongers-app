@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { NavLink, Navigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
 const SignUp = () => {
+  let navigate = useNavigate()
   const handleSubmit = async (event) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
@@ -27,6 +28,7 @@ const SignUp = () => {
     })
     const newData = await res.json()
     console.log(newData);
+    navigate("/")
   };
 
   return (
