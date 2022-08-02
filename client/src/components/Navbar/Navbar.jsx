@@ -125,29 +125,29 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-     
+
       <MenuItem>
-      <Link to='/cart'>
-      <IconButton 
-          size="large" 
-          aria-label="Show cart items" 
-          color="inherit">
-          <Badge 
-          badgeContent={2} 
-          color="error">
-              <ShoppingCartIcon/>
-          </Badge>
-        </IconButton>
-      <p>Cart</p>
-      </Link>
+        <Link to='/cart'>
+          <IconButton
+            size="large"
+            aria-label="Show cart items"
+            color="inherit">
+            <Badge
+              badgeContent={2}
+              color="error">
+              <ShoppingCartIcon />
+            </Badge>
+          </IconButton>
+          <p>Cart</p>
+        </Link>
       </MenuItem>
       <MenuItem>
-        <IconButton 
-          size="large" 
-          aria-label="show 4 new mails" 
+        <IconButton
+          size="large"
+          aria-label="show 4 new mails"
           color="inherit">
-          <Badge 
-            badgeContent={4} 
+          <Badge
+            badgeContent={4}
             color="error">
             <MailIcon />
           </Badge>
@@ -183,122 +183,128 @@ export default function PrimarySearchAppBar() {
 
   return (
     <>
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <Badge badgeContent={ <PhishingIcon />} 
-           >
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
-          >
-            Hooked
-          </Typography>
-          </Badge>
-         
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-          <Link to='/cart'>
-          <IconButton 
-            size="large" 
-            aria-label="Show cart items" 
-            color="inherit">
-            <Badge 
-            badgeContent={2} 
-            color="error">
-                <ShoppingCartIcon/>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static">
+          <Toolbar>
+            <Badge badgeContent={<PhishingIcon />}
+            >
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ display: { xs: 'none', sm: 'block' } }}
+              >
+                Hooked
+              </Typography>
             </Badge>
-          </IconButton>
-          </Link>
-            <IconButton 
-              size="large" 
-              aria-label="show 4 new mails" 
-              color="inherit">
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton sx={{pl:2}}
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none'} }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-    </Box>
-    
-    <AppBar
-      position="static"
-      color="default"
-      elevation={0}
-    >
-      <Toolbar sx={{ flexWrap: 'wrap'}}>
-        <Box 
-          sx={{
-            flexGrow: 1, 
-            justifyContent:'start'
+
+            <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+              <Link to='/cart'>
+                <IconButton
+                  size="large"
+                  aria-label="Show cart items"
+                  color="inherit">
+                  <Badge
+                    badgeContent={2}
+                    color="error">
+                    <ShoppingCartIcon />
+                  </Badge>
+                </IconButton>
+              </Link>
+              <IconButton
+                size="large"
+                aria-label="show 4 new mails"
+                color="inherit">
+                <Badge badgeContent={4} color="error">
+                  <MailIcon />
+                </Badge>
+              </IconButton>
+              <IconButton
+                size="large"
+                aria-label="show 17 new notifications"
+                color="inherit"
+              >
+                <Badge badgeContent={17} color="error">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+              <IconButton sx={{ pl: 2 }}
+                size="large"
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            </Box>
+            <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+              <IconButton
+                size="large"
+                aria-label="show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
+              >
+                <MoreIcon />
+              </IconButton>
+            </Box>
+          </Toolbar>
+        </AppBar>
+        {renderMobileMenu}
+        {renderMenu}
+      </Box>
+
+      <AppBar
+        position="static"
+        color="default"
+        elevation={0}
+      >
+        <Toolbar sx={{ flexWrap: 'wrap' }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              justifyContent: 'start'
             }}>
-          <NavLink to="/" style={{ textDecoration: 'none' }}
+            <NavLink to="/" style={{ textDecoration: 'none' }}
             >
-              <Button sx={{p: 3}}>
-              Home
+              <Button sx={{ p: 3 }}>
+                Home
               </Button>
-          </NavLink>
-          <Button
-          sx={{p: 3}} >
-            Categories
-          </Button>
-          <Button
-          sx={{p: 3}} >
-            Specials
-          </Button>
-          <Button
-          sx={{p: 3}} >
-            Whats on
-          </Button>
-        </Box>
-        <Search>
-          <SearchIconWrapper>
-            <SearchIcon />
+            </NavLink>
+            <Button
+              sx={{ p: 3 }} >
+              Categories
+            </Button>
+            <Button
+              sx={{ p: 3 }} >
+              Specials
+            </Button>
+            <Button
+              sx={{ p: 3 }} >
+              Whats on
+            </Button>
+            <NavLink to="/new" style={{ textDecoration: 'none' }}>
+              <Button
+                sx={{ p: 3 }} >
+                New Item
+              </Button>
+            </NavLink>
+          </Box>
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-               placeholder="Search…"
+              placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
-              />
-        </Search>
-      </Toolbar>
-    </AppBar>
+            />
+          </Search>
+        </Toolbar>
+      </AppBar>
     </>
   );
 }
