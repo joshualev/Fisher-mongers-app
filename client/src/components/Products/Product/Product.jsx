@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box'
 import CardActions from '@mui/material/CardActions';
@@ -6,8 +6,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-
-
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import IconButton from '@mui/material/IconButton';
 const Product = ( {fish} ) => {
   return (
     <>
@@ -36,13 +36,32 @@ const Product = ( {fish} ) => {
         <CardActions disableSpacing sx={{display: 'flex',
         justifyContent: 'center'}}>
             <Card sx={{mb:1}}>
-                <Button  sx={{pt:1, pb:1}} variant="contained" size="medium" color="primary">-</Button>
-                <Typography variant="p" sx={{p:2}}>
-                    6
+                <Button  
+                    sx={{pt:0.25, pb:0.25}} 
+                    variant="contained" 
+                    size="medium" 
+                    color="inherit">-
+                </Button>
+                <Typography 
+                    variant="p" 
+                    sx={{p:2}}>
+                        6
                 </Typography>
-                <Button sx={{pt:1, pb:1}} variant="contained"  size="medium" color="primary">+</Button>
+                <Button 
+                    sx={{pt:0.25, pb:0.25}} 
+                    variant="contained"  
+                    size="medium" 
+                    color="inherit">+
+                </Button>
                 <div>
-                <Button sx={{mt:1, width:'100%'}} variant="contained" color="warning">Add to cart</Button>
+                 <IconButton 
+                 size="medium" 
+                 variant="contained" 
+                 color="primary"
+                 >
+                      <ShoppingCartIcon sx={{mr:1}}/>
+                      Add to cart
+               </IconButton>
                 </div>
             </Card>
         </CardActions>
