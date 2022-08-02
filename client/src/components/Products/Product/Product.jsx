@@ -10,7 +10,6 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import IconButton from '@mui/material/IconButton';
-import { useState, useEffect } from "react"
 
 const Product = ( {fish} ) => {
     const [counter, setCounter] = useState()
