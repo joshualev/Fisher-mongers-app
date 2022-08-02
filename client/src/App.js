@@ -14,6 +14,7 @@ import Cart from './components/Checkout/Cart/Cart'
 const App = () => {
   const [fishList, setFishList] = useState(null)
   const [authorised, setAuthorised] = useState(null)
+  const [cart, setCart] = useState([])
   const navigate = useNavigate()
 
   const getFish = async() => {
@@ -31,6 +32,18 @@ const App = () => {
   const handleLogout = () => {
     setAuthorised(false)
     navigate("/")
+  }
+
+  const addToCart = (fishID, quantity) => {
+    console.log(fishID, quantity);
+    const newItem = { [fishID]: quantity }
+    console.log(newItem);
+    setCart()
+    console.log(cart);
+  }
+
+  const removeFromCart = (item, quantity) => {
+    console.log(item, quantity);
   }
 
   // Activate once login route is working
@@ -56,6 +69,8 @@ const App = () => {
         <Route 
           path='/' 
           element={fishList && <Products
+            addToCart={addToCart}
+            removeFromCart={removeFromCart}
             fishList={fishList} 
           />}
         />
