@@ -16,7 +16,7 @@ const Product = ( {fish} ) => {
     useEffect(() => {
       setCounter(0)
     }, [])
-  
+
     const handleClick = (event) => {
       if (event.target.name === "plus" && counter < fish.stock ) {
         setCounter(counter + 1)
@@ -38,7 +38,7 @@ const Product = ( {fish} ) => {
                 {fish.species}
             </Typography>
             <Typography variant="p" color="textSecondary" gutterBottom>
-                {fish.stock} left
+                Stock remaining: {fish.stock - counter}
             </Typography>
             </Box>
             <Typography variant="h5" gutterBottom>
