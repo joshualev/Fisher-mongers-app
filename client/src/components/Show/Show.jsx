@@ -16,6 +16,7 @@ const Show = ({ fishList }) => {
   const [counter, setCounter] = useState()
   const params = useParams()
   const fish = fishList.find((f) => f._id === params.fishID)
+  console.log(fish);
 
   useEffect(() => {
     setCounter(0)
