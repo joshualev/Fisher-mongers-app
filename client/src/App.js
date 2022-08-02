@@ -8,7 +8,7 @@ import Footer from './components/Footer/Footer'
 import SignIn from './components/User/SignIn'
 import SignUp from './components/User/SignUp'
 const App = () => {
-  const [fishList, setFishList] = useState([])
+  const [fishList, setFishList] = useState(null)
 
   const getFish = async() => {
     const url = 'http://localhost:4000/fish'
