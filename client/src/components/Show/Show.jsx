@@ -68,18 +68,14 @@ const Show = () => {
                         <Typography variant="p" sx={{p:2}}>
                             6
                         </Typography>
-                        <Button sx={{pt:1, pb:1}} variant="contained"  size="medium" color="primary">+</Button>
+                        <Button sx={{pt:1, pb:1}} variant="contained"  size="medium" color="primary"></Button>
                         <div>
                             <Button sx={{mt:1, width:'100%'}} variant="contained" color="warning">Add to cart</Button>
                         </div>
                     </Card>
                 </CardActions>
               </Card>
-            
-   
       </Container>
-
-
         </>
     )
 }
