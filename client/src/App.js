@@ -8,9 +8,13 @@ import Create from './components/Create/Create'
 import Footer from './components/Footer/Footer'
 import SignIn from './components/User/SignIn'
 import SignUp from './components/User/SignUp'
+import SignOut from './components/User/SignOut'
 import Cart from './components/Checkout/Cart/Cart'
+
 const App = () => {
   const [fishList, setFishList] = useState(null)
+  const [authorised, setAuthorised] = useState(null)
+  const navigate = useNavigate()
 
   const getFish = async() => {
     const url = 'http://localhost:4000/fish'
@@ -19,13 +23,36 @@ const App = () => {
     setFishList(data)
   }
 
+  const handleAuth = (authed) => {
+    setAuthorised(authed)
+    navigate("/")
+  }
+
+  const handleLogout = () => {
+    setAuthorised(false)
+    navigate("/")
+  }
+
+  // Activate once login route is working
+  useEffect(() => {
+    const checkIfLoggedIn = async () => {
+      const res = await fetch('/users/isauthorised')
+      const data = await res.json()
+      console.log(data.msg)
+      setAuthorised(data.authorised)
+    }
+    checkIfLoggedIn()
+  }, [])
 
   useEffect(() => {
     getFish()
   },[])
+
   return (
     <div>
-      <Navbar/>
+      {fishList &&
+        <Navbar fishList={fishList}/>
+      }
 
       <Routes>
         <Route 
@@ -58,11 +85,15 @@ const App = () => {
         />
          <Route 
           path='/signin' 
-          element={ <SignIn/>}
+          element={ <SignIn handleLogin={handleAuth} />}
         />
         <Route 
           path='/signup' 
-          element={ <SignUp/>}
+          element={ <SignUp handleRegister={handleAuth}/>}
+        />
+        <Route 
+          path="/signout"
+          element={<SignOut handleSignout={handleLogout}/>}
         />
       </Routes>
       <Footer/>

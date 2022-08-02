@@ -10,7 +10,7 @@ import Grid from '@mui/material/Grid'
 import CardActionArea from '@mui/material/CardActionArea';
 
 
-const Cart = ( { fishList }) => {
+const Cart = ( { fishList } ) => {
   return (
     <>
     <Container align="center" sx={{mt:3}}>

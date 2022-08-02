@@ -1,7 +1,11 @@
+import { useState, useEffect } from 'react'
+import { Link, useNavigate} from 'react-router-dom'
 import React from 'react'
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
+import Container from '@mui/material/Container'
+import Button from '@mui/material/Button'
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
     padding: theme.spacing(0, 2),
@@ -43,8 +47,20 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
       width: 'auto',
     },
   }));
-const Searchbar = () => {
+
+
+const Searchbar = ( { fishList }) => {
+  const [filteredData, setFilteredData] = useState([])
+  
+  const handleFilter = (e) => {
+    const searchWord = e.target.value
+    const newFilter = fishList.filter((value) => {
+      return value.species.includes(searchWord)
+    })
+    setFilteredData(newFilter)
+  }
   return (
+    <>
     <Search>
     <SearchIconWrapper>
       <SearchIcon />
@@ -52,8 +68,24 @@ const Searchbar = () => {
       <StyledInputBase
         placeholder="Search…"
         inputProps={{ 'aria-label': 'search' }}
+        onChange={handleFilter}
         />
   </Search>
+  {filteredData.length !== 0 && (
+  <Container >
+    {filteredData.map((fish) => {
+      return (
+        <Link 
+          style={{textDecoration:'none'}}
+          to={fish._id}
+        >
+           <Button sx={{color:'inherit'}}>{fish.species}</Button>
+        </Link>
+      )
+    })}
+  </Container>
+  )}
+  </>
   )
 }
 
