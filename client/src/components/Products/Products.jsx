@@ -5,7 +5,9 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import PhishingIcon from '@mui/icons-material/Phishing';
 import Badge from '@mui/material/Badge'
+import { useState, useEffect } from "react"
 const Products = ({fishList}) => {
+
   return (
       <>
       <main>
