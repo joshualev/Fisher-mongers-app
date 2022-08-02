@@ -195,20 +195,21 @@ export default function PrimarySearchAppBar() {
           >
             Hooked
           </Typography>
-          </Badge>      
+          </Badge>
+         
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
           <Link to='/cart'>
-            <IconButton 
-              size="large" 
-              aria-label="Show cart items" 
-              color="inherit">
-              <Badge 
-              badgeContent={2} 
-              color="error">
-                  <ShoppingCartIcon/>
-              </Badge>
-            </IconButton>
+          <IconButton 
+            size="large" 
+            aria-label="Show cart items" 
+            color="inherit">
+            <Badge 
+            badgeContent={2} 
+            color="error">
+                <ShoppingCartIcon/>
+            </Badge>
+          </IconButton>
           </Link>
             <IconButton 
               size="large" 

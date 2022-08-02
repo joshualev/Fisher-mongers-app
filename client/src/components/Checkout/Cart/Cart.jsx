@@ -39,7 +39,7 @@ const Cart = ( { fishList }) => {
             <Typography sx={{mb:2}}>
                 Total:
             </Typography>
-            <Link to='/checkout'>
+            <Link to='/checkout' style={{textDecoration:'none'}}>
                 <Button variant="contained" size="large">Proceed to Payment</Button>
             </Link>
         </Grid>
