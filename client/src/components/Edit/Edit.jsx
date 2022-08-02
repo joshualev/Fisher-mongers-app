@@ -1,17 +1,14 @@
-import { useState } from "react"
+import { usState } from "react"
+import { useParams } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { Container, Typography, CssBaseline, Button, TextField, InputAdornment, Box, createTheme } from "@mui/material"
 
-// const initialState = {
-//   species: "",
-//   description: "",
-//   imageURL: "",
-//   price: "",
-//   stock: "",
-//   caughtBy: ""
-// }
+const Edit = ({ fishList, handleEdit }) => {
+  const { fishID } = useParams()
+  const fish = fishList.find((f) => f._id === fishID )
+  
+  // const [fields, setFields ] = useState(fish)
 
-const Create = (props) => {
   const {
     register,
     handleSubmit,
@@ -29,6 +26,10 @@ const Create = (props) => {
     }
   })
 
+  // const updatefields = (event) => {
+  //   const { name, value } = 
+  // }
+
   return (
     <>
       <CssBaseline />
@@ -37,16 +38,18 @@ const Create = (props) => {
           maxWidth="med"
           align="center"
           sx={{ mt: 2 }}>
-          <Typography component="h1" variant="h3" sx={{ mb: 2 }}>Add A New Item</Typography>
+          <Typography component="h1" variant="h3" sx={{ mb: 2 }}>Update {fish.species}</Typography>
 
           <form onSubmit={handleSubmit((data) => {
-            props.handleNewFish(data)
+            handleEdit({...data, _id: fish._id})
+            // console.log(fish._id);
           })}>
             <TextField
               type="text"
               label="Species"
               sx={{ width: 300 }}
-              {...register("species", { required: "Species type is required" })}
+              defaultValue={fish.species}
+              {...register("Species", { required: "Species type is required" })}
             />
             <Box sx={{ color: "red", width: 300 }} >
               <Typography align="left" sx={{ fontSize: 12 }}>{errors.species?.message}</Typography>
@@ -57,6 +60,7 @@ const Create = (props) => {
               {...register("description", { required: "Description of item is required" })}
               label="Description of item"
               sx={{ width: 300, mt: 2 }}
+              defaultValue={fish.description}
             />
             <Box sx={{ color: "red", width: 300 }} >
               <Typography align="left" sx={{ fontSize: 12 }} >{errors.description?.message}
@@ -68,6 +72,7 @@ const Create = (props) => {
               {...register("imageURL")}
               label="Image"
               sx={{ width: 300, mt: 2 }}
+              defaultValue={fish.imageURL}
             />
             <br />
 
@@ -79,6 +84,7 @@ const Create = (props) => {
                 startAdornment: <InputAdornment position="start">$</InputAdornment>
               }}
               sx={{ width: 300, mt: 2 }}
+              defaultValue={fish.price}
             />
             <Box sx={{ color: "red", width: 300 }} >
               <Typography align="left" sx={{ fontSize: 12 }} >{errors.price?.message}
@@ -90,6 +96,7 @@ const Create = (props) => {
               {...register("stock", { required: "Amount of stock is required" })}
               label="Amount of Stock"
               sx={{ width: 300, mt: 2 }}
+              defaultValue={fish.stock}
             />
             <Box sx={{ color: "red", width: 300 }} >
               <Typography align="left" sx={{ fontSize: 12 }} >{errors.stock?.message}
@@ -101,6 +108,7 @@ const Create = (props) => {
               {...register("caughtBy", { required: "Fishmonger's name is required" })}
               label="Caught By..."
               sx={{ width: 300, mt: 2 }}
+              defaultValue={fish.caughtBy}
             />
             <Box sx={{ color: "red", width: 300 }} >
               <Typography align="left" sx={{ fontSize: 12 }} >{errors.caughtBy?.message}
@@ -111,7 +119,7 @@ const Create = (props) => {
               type="submit"
               variant="contained"
               sx={{ width: 300, my: 2 }}
-            >Add Item
+            >Update Item
             </Button>
           </form>
         </Container>
@@ -120,4 +128,4 @@ const Create = (props) => {
   )
 }
 
-export default Create
+export default Edit
