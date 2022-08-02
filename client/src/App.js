@@ -52,7 +52,55 @@ const App = () => {
 
   useEffect(() => {
     getFish()
-  },[])
+  }, [])
+
+  const handleNewFish = async (createdFish) => {
+    if (createdFish.imageURL === "") {
+      createdFish.imageURL = undefined
+    }
+    // console.log("New fish added:", createdFish)
+    const res = await fetch("http://localhost:4000/fish", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(createdFish)
+    })
+    // console.log(res.ok)  
+    if (res.ok) {
+      const newFish = await res.json()
+      // console.log(newFish)
+      setFishList([
+        ...fishList,
+        newFish
+      ])
+      navigate("/")
+    } else {
+      console.log("error adding the new fish")
+    }
+  }
+
+  const handleEdit = async (editedFish) => {
+    // console.log("Edited fish: ", editedFish)
+    const res = await fetch(`http://localhost:4000/fish/${editedFish._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(editedFish)
+    })
+    // console.log(res.ok)
+    if (res.ok) {
+      const updatedFish = await res.json()
+      // console.log(updatedFish)
+      setFishList([
+        ...fishList,
+        updatedFish
+      ])
+    } else {
+      console.log("error updating the fish")
+    }
+  }
 
   return (
     <div>
@@ -76,13 +124,13 @@ const App = () => {
           element={<Create handleNewFish={handleNewFish} />}
         />
         <Route
-          path='/cart' 
+          path='/cart'
           element={fishList && <Cart
             fishList={fishList}
           />}
         />
         <Route
-          path='/checkout' 
+          path='/checkout'
           element={fishList && <Checkout
             fishList={fishList}
           />}
@@ -95,21 +143,21 @@ const App = () => {
           path='/signup'
           element={<SignUp />}
         />
-        <Route 
+        <Route
           path='/edit/:fishID'
           element={fishList && <Edit fishList={fishList} handleEdit={handleEdit} />}
         />
-          <Route 
-          path='/signin' 
-          element={ <SignIn handleLogin={handleAuth} />}
+        <Route
+          path='/signin'
+          element={<SignIn handleLogin={handleAuth} />}
         />
-        <Route 
-          path='/signup' 
-          element={ <SignUp handleRegister={handleAuth}/>}
+        <Route
+          path='/signup'
+          element={<SignUp handleRegister={handleAuth} />}
         />
-        <Route 
+        <Route
           path="/signout"
-          element={<SignOut handleSignout={handleLogout}/>}
+          element={<SignOut handleSignout={handleLogout} />}
         />
       </Routes>
       <Footer />
