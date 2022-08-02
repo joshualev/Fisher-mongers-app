@@ -3,6 +3,7 @@ import { useState, useEffect} from 'react'
 import Products from './components/Products/Products';
 import Navbar from './components/Navbar/Navbar'
 import Show from './components/Show/Show'
+import Create from './components/Create/Create'
 
 const App = () => {
   const [fishList, setFishList] = useState([])
@@ -34,6 +35,10 @@ const App = () => {
           element={fishList && <Show
             fishList={fishList}
           />}
+        />
+        <Route 
+          path="/new"
+          element= {<Create />}
         />
       </Routes>
         
