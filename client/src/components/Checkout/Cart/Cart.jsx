@@ -38,9 +38,9 @@ const CartItem = ({ id, quantity, fishList }) => {
 
 const Cart = ({ fishList, cart }) => {
     const dummyCart = [
-        { '62e856b9c97e3f6ee496084f': 2 },
-        { '62e856b9c97e3f6ee4960853': 1 },
-        { '62e856b9c97e3f6ee4960856': 3 }
+        { '62e8b4814da9f4788ef82009': 2 },
+        { '62e8b4814da9f4788ef82008': 1 },
+        { '62e8b4814da9f4788ef82007': 3 }
     ]
 
     const cartList = dummyCart.map((i) => {
