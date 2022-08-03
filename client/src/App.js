@@ -93,9 +93,12 @@ const App = () => {
   }, [])
 
   const handleNewFish = async (createdFish) => {
-    if (createdFish.imageURL === "") {
-      createdFish.imageURL = undefined
-    }
+    // if (createdFish.imageURL === "") {
+    //   createdFish.imageURL = undefined
+    // }
+    // const formData = new FormData()
+    // formData.append("image", createdFish.file[0])
+    // console.log(formData)
     // console.log("New fish added:", createdFish)
     const res = await fetch("http://localhost:4000/fish", {
       method: "POST",
@@ -119,29 +122,29 @@ const App = () => {
   }
 
   const handleEdit = async (editedFish) => {
-    // console.log("Edited fish: ", editedFish)
-    const res = await fetch(`http://localhost:4000/fish/${editedFish._id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(editedFish)
-    })
-    // console.log(res.ok)
-    if (res.ok) {
-      const updatedFish = await res.json()
-      // console.log(updatedFish)
-      const fishIndex = fishList.map((fish => fish._id === updatedFish._id)).indexOf(true)
-      console.log(fishIndex)
-      setFishList([
-        ...fishList.splice(0, fishIndex),
-        updatedFish,
-        ...fishList.splice(fishIndex+1)
-      ])
-      navigate(`/${updatedFish._id}`)
-    } else {
-      console.log("error updating the fish")
-    }
+    console.log("Edited fish: ", editedFish)
+  //   const res = await fetch(`http://localhost:4000/fish/${editedFish._id}`, {
+  //     method: "PUT",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify(editedFish)
+  //   })
+  //   // console.log(res.ok)
+  //   if (res.ok) {
+  //     const updatedFish = await res.json()
+  //     // console.log(updatedFish)
+  //     const fishIndex = fishList.map((fish => fish._id === updatedFish._id)).indexOf(true)
+  //     console.log(fishIndex)
+  //     setFishList([
+  //       ...fishList.splice(0, fishIndex),
+  //       updatedFish,
+  //       ...fishList.splice(fishIndex+1)
+  //     ])
+  //     navigate(`/${updatedFish._id}`)
+  //   } else {
+  //     console.log("error updating the fish")
+  //   }
   }
 
   const handleDelete = async (fishIDToDelete) => {

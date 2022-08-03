@@ -5,9 +5,10 @@ const session = require("express-session")
 const mongoDBSession = require("connect-mongodb-session")
 const cors = require('cors')
 
+const uploadController = require('./controllers/uploads')
 const usersController = require("./controllers/Users")
 const fishController = require('./controllers/Fish')
-const uploadController = require('./controllers/uploads')
+
 
 const app = express()
 const PORT = process.env.PORT

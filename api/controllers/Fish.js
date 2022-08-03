@@ -1,6 +1,7 @@
 const express=require('express')
 
 const fishRouter = express.Router()
+const upload = require('../middlewares/upload')
 const Fish = require('../models/Fish')
 
 
@@ -22,8 +23,12 @@ fishRouter.get("/:fishID", async (req, res) => {
 })
 
 // New Route
-fishRouter.post("/", async (req, res) => {
+fishRouter.post("/", upload.single("image"), async (req, res) => {
     try {
+        // if (req.file) {
+        //     req.body.imageURL = req.file.path
+        // }
+        console.log(req.file);
         const newFish = await Fish.create(req.body)
         console.log(newFish)
         res.status(200).json(newFish)

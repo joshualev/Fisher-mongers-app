@@ -20,7 +20,7 @@ const Create = (props) => {
   } = useForm()
 
   // console.log(errors);
-  // console.log(watch());
+  console.log(watch());
 
   const errorMessage = createTheme({
     typography: {
@@ -29,6 +29,21 @@ const Create = (props) => {
     }
   })
 
+  const handleImage = async (img) => {
+    console.log(img)
+    const formData = new FormData()
+    formData.append("image", img.file[0])
+    console.log(formData);
+    
+    const res = await fetch("http://localhost:4000/upload", {
+      method: "POST",
+      body: formData
+    })
+    const data = await res.json()
+    console.log(data)
+  }
+
+
   return (
     <>
       <CssBaseline />
@@ -36,12 +51,10 @@ const Create = (props) => {
         <Container
           maxWidth="med"
           align="center"
-          sx={{ mt: 2, pb:10}}>
+          sx={{ mt: 2, pb: 10 }}>
           <Typography component="h1" variant="h3" sx={{ mb: 2 }}>Add A New Item</Typography>
 
-          <form onSubmit={handleSubmit((data) => {
-            props.handleNewFish(data)
-          })}>
+          <form onSubmit={handleSubmit((data) => { handleImage(data) })}>
             <TextField
               type="text"
               label="Species"
@@ -63,13 +76,13 @@ const Create = (props) => {
               </Typography>
             </Box>
 
-            <TextField
-              type="text"
+            {/* <TextField
+              type="file"
               {...register("imageURL")}
               label="Image"
               sx={{ width: 300, mt: 2 }}
             />
-            <br />
+            <br /> */}
 
             <TextField
               type="number"
@@ -106,6 +119,24 @@ const Create = (props) => {
               <Typography align="left" sx={{ fontSize: 12 }} >{errors.caughtBy?.message}
               </Typography>
             </Box>
+
+            <Button variant="outlined" component="label"sx={{ mt: 2, width: 300 }} >
+              Upload Image
+              <input  
+                accept="image/*" 
+                hidden
+                multiple 
+                type="file" 
+                name="image" 
+                id="image"
+                {...register("file")}
+              />
+            </Button>
+            {/* <Box sx={{ color: "green", width: 300 }} >
+              {image.value && <Typography align="left" sx={{ fontSize: 12 }} >Image {image.value} uploaded
+              </Typography>}
+            </Box> */}
+            <br />
 
             <Button
               type="submit"
