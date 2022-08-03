@@ -17,6 +17,7 @@ const App = () => {
   const [fishList, setFishList] = useState(null)
   const [authorised, setAuthorised] = useState(null)
   const [cart, setCart] = useState([])
+  const [cartTotal, setCartTotal] = useState(0)
   const navigate = useNavigate()
 
   const getFish = async () => {
@@ -30,6 +31,19 @@ const App = () => {
     getFish()
   }, [])
 
+
+
+  useEffect(() => {
+    const changeCartTotal = () => {
+      let newCartTotal = 0
+      cart.map((i) => {
+        newCartTotal = newCartTotal + (i.f.price * i.q)
+      })
+      setCartTotal(newCartTotal)
+    }
+    changeCartTotal()
+  }, [cart])
+
   const handleAuth = (authed) => {
     console.log(authed)
     setAuthorised(authed)
@@ -42,9 +56,7 @@ const App = () => {
   }
 
   const addToCart = (fish, quantity) => {
-    console.log(fish, quantity);
     const newItem = { f: fish, q: quantity }
-    console.log(newItem);
     setCart([
       ...cart,
       newItem
@@ -165,7 +177,8 @@ const App = () => {
         <Route
           path='/cart'
           element={fishList && <Cart
-            fishList={fishList} cart={cart}
+            cart={cart}
+            cartTotal={cartTotal}
           />}
         />
         <Route

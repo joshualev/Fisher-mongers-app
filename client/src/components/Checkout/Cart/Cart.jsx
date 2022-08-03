@@ -36,46 +36,35 @@ const CartItem = ({ fish, quantity }) => {
     )
 }
 
-const Cart = ({ fishList, cart }) => {
-    // const dummyCart = [
-    //     { '62e856b9c97e3f6ee496084f': 2 },
-    //     { '62e856b9c97e3f6ee4960853': 1 },
-    //     { '62e856b9c97e3f6ee4960856': 3 }
-    // ]
+const Cart = ({ cart, cartTotal }) => {
+    let emptyCart = ""
+    if (cart.length === 0) {
+        emptyCart = "There is nothing in your cart yet"
+    }
 
     const cartList = cart.map((i) => {
         return (
             <CartItem
-                key={Object.keys(i).toString()}
+                key={i._id}
                 fish={i.f}
                 quantity={i.q}
             />
         )
     })
 
-    const cartTotal = () => {
-        let total = 0
-        for ( let item of cart ) {
-            let price = fishList.find((f) => f._id)
-            let amount = parseInt(Object.values(item).toString())
-
-        }
-    }
-    cartTotal()
-
     return (
         <>
             <Container align="center" sx={{ mt: 3 }}>
                 <Grid sx={{ width: '320px' }}>
                     <CardActionArea component="a" href="#">
-                        {/* cartList goes here */}
+                        <h3>{emptyCart}</h3>
                         {cartList}
                     </CardActionArea>
                 </Grid>
 
                 <Grid sx={{ m: 2 }} >
                     <Typography sx={{ mb: 2 }}>
-                        Total:
+                        Total: ${cartTotal}
                     </Typography>
                     <Link to='/checkout' style={{ textDecoration: 'none' }}>
                         <Button variant="contained" size="large">Proceed to Payment</Button>
