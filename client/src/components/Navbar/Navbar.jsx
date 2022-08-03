@@ -42,6 +42,13 @@ export default function PrimarySearchAppBar(props) {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const handleClick = async () => {
+    const res = await fetch("/users/logout", {
+      method: "POST"
+    })
+    props.handleLogout()
+  }
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -59,10 +66,7 @@ export default function PrimarySearchAppBar(props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-      <Link to='/signin' style={{ textDecoration: 'none' }}>
-        <MenuItem onClick={handleMenuClose}>Sign out</MenuItem>
-      </Link>
+      <MenuItem onClick={handleClick}>Sign out</MenuItem>
     </Menu>
   );
 
@@ -114,7 +118,7 @@ export default function PrimarySearchAppBar(props) {
                   color="primary"
                   sx={{ mt: 0.75 }}>
                   <Badge
-                    badgeContent={2}
+                    badgeContent={props.cart.length}
                     color="error"
                     sx={{ mr: 2 }}>
                     <ShoppingCartIcon />
@@ -170,6 +174,14 @@ export default function PrimarySearchAppBar(props) {
               </Button>
             </NavLink>
             
+            <Button
+              sx={{ p: 3 }} >
+              Categories
+            </Button>
+            <Button
+              sx={{ p: 3 }} >
+              Specials
+            </Button>
             <Button
               sx={{ p: 3 }} >
               Whats on

@@ -9,10 +9,8 @@ import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import CardActionArea from '@mui/material/CardActionArea';
 
-const CartItem = ({ id, quantity, fishList }) => {
-    console.log(id)
-    const fish = fishList.find((f) => f._id === id)
-    console.log(fish)
+const CartItem = ({ fish, quantity }) => {
+
     return (
         <div>
             <Card sx={{ display: 'flex' }}>
@@ -38,47 +36,35 @@ const CartItem = ({ id, quantity, fishList }) => {
     )
 }
 
-const Cart = ({ fishList, cart }) => {
-    const dummyCart = [
-        { '62e890b63f19e97844f6c175': 2 },
-        { '62e890b63f19e97844f6c177': 1 },
-        { '62e890b63f19e97844f6c17a': 3 }
-    ]
+const Cart = ({ cart, cartTotal }) => {
+    let emptyCart = ""
+    if (cart.length === 0) {
+        emptyCart = "There is nothing in your cart yet"
+    }
 
-    const cartList = dummyCart.map((i) => {
+    const cartList = cart.map((i) => {
         return (
             <CartItem
-                key={Object.keys(i).toString()}
-                id={Object.keys(i).toString()}
-                quantity={Object.values(i)}
-                fishList={fishList}
+                key={i._id}
+                fish={i.f}
+                quantity={i.q}
             />
         )
     })
-
-    const cartTotal = () => {
-        let total = 0
-        for ( let item of dummyCart ) {
-            let price = 0
-            let amount = parseInt(Object.values(item).toString())
-
-        }
-    }
-    cartTotal()
 
     return (
         <>
             <Container align="center" sx={{ mt: 3 }}>
                 <Grid sx={{ width: '320px' }}>
                     <CardActionArea component="a" href="#">
-                        {/* cartList goes here */}
+                        <h3>{emptyCart}</h3>
                         {cartList}
                     </CardActionArea>
                 </Grid>
 
                 <Grid sx={{ m: 2 }} >
                     <Typography sx={{ mb: 2 }}>
-                        Total:
+                        Total: ${cartTotal}
                     </Typography>
                     <Link to='/checkout' style={{ textDecoration: 'none' }}>
                         <Button variant="contained" size="large">Proceed to Payment</Button>
