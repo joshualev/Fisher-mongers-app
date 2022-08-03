@@ -5,9 +5,9 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import PhishingIcon from '@mui/icons-material/Phishing';
 import Badge from '@mui/material/Badge'
+import Searchbar from '../Navbar/Searchbar'
 import { useState, useEffect } from "react"
 const Products = ({fishList}) => {
-
   return (
       <>
       <main>
@@ -41,6 +41,7 @@ const Products = ({fishList}) => {
                     </Typography>     
         </Container>
       {/* End hero unit */}
+
         <Grid sx={{p:10}}
         container 
         justify="center" 

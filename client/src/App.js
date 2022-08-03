@@ -50,9 +50,6 @@ const App = () => {
     checkIfLoggedIn()
   }, [])
 
-  useEffect(() => {
-    getFish()
-  }, [])
 
   const handleNewFish = async (createdFish) => {
     if (createdFish.imageURL === "") {
@@ -104,7 +101,9 @@ const App = () => {
 
   return (
     <div>
-      <Navbar />
+      { fishList &&
+        <Navbar fishList={fishList}/>
+      }
 
       <Routes>
         <Route
