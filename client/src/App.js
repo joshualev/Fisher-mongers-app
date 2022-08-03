@@ -16,6 +16,7 @@ import ProtectedRoute from './components/Protected/Protected'
 const App = () => {
   const [fishList, setFishList] = useState(null)
   const [authorised, setAuthorised] = useState(null)
+  const [cart, setCart] = useState([])
   const navigate = useNavigate()
 
   const getFish = async () => {
@@ -29,7 +30,6 @@ const App = () => {
     getFish()
   }, [])
 
-
   const handleAuth = (authed) => {
     console.log(authed)
     setAuthorised(authed)
@@ -39,6 +39,21 @@ const App = () => {
   const handleLogout = () => {
     setAuthorised(false)
     navigate("/")
+  }
+
+  const addToCart = (fishID, quantity) => {
+    console.log(fishID, quantity);
+    const newItem = { [fishID]: quantity }
+    console.log(newItem);
+    setCart([
+      ...cart,
+      newItem
+    ]) // <- Why not working?
+    console.log(cart);
+  }
+
+  const removeFromCart = (item, quantity) => {
+    console.log(item, quantity);
   }
 
   // Activate once login route is working
@@ -118,13 +133,17 @@ const App = () => {
 
   return (
     <div>
-      <Navbar />
+      { fishList &&
+        <Navbar fishList={fishList}/>
+      }
 
       <Routes>
         <Route
           path='/'
           element={fishList && <Products
-            fishList={fishList}
+            addToCart={addToCart}
+            removeFromCart={removeFromCart}
+            fishList={fishList} 
           />}
         />
         <Route
@@ -147,7 +166,7 @@ const App = () => {
         <Route
           path='/cart'
           element={fishList && <Cart
-            fishList={fishList}
+            fishList={fishList} cart={cart}
           />}
         />
         <Route

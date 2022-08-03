@@ -9,42 +9,81 @@ import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import CardActionArea from '@mui/material/CardActionArea';
 
-
-const Cart = ( { fishList }) => {
-  return (
-    <>
-    <Container align="center" sx={{mt:3}}>
-        <Grid sx={{width:'320px'}}>
-        <CardActionArea component="a" href="#">
+const CartItem = ({ id, quantity, fishList }) => {
+    const fish = fishList.find((f) => f._id === id)
+    return (
+        <div>
             <Card sx={{ display: 'flex' }}>
-            <CardContent >
-                <Typography component="h2" variant="h5">
-                Fish name
-                </Typography>
-                <Typography variant="subtitle1" color="text.secondary">
-                Price
-                </Typography>
-            </CardContent>
-            <CardMedia
-                component="img"
-                sx={{ width: 160, display: 'block', p:1 }}
-                image='https://res.cloudinary.com/dpk0o7ztt/image/upload/v1659393111/snapper_fillet_qraorh.jpg'
-                alt="alt"
-            />
+                <CardContent >
+                    <Typography component="h2" variant="h5">
+                        { fish.species }
+                    </Typography>
+                    <Typography variant="subtitle1" color="text.secondary">
+                        ${ fish.price }
+                    </Typography>
+                    <Typography variant="subtitle1" color="text.secondary">
+                        In cart: {quantity}
+                    </Typography>
+                </CardContent>
+                <CardMedia
+                    component="img"
+                    sx={{ width: 160, display: 'block', p: 1 }}
+                    image={ fish.imageURL }
+                    alt="alt"
+                />
             </Card>
-        </CardActionArea>
-        </Grid>
+        </div>
+    )
+}
 
-        <Grid sx={{m:2}} >
-            <Typography sx={{mb:2}}>
-                Total:
-            </Typography>
-            <Link to='/checkout' style={{textDecoration:'none'}}>
-                <Button variant="contained" size="large">Proceed to Payment</Button>
-            </Link>
-        </Grid>
-    </Container>
-    </>
+const Cart = ({ fishList, cart }) => {
+    const dummyCart = [
+        { '62e856b9c97e3f6ee496084f': 2 },
+        { '62e856b9c97e3f6ee4960853': 1 },
+        { '62e856b9c97e3f6ee4960856': 3 }
+    ]
+
+    const cartList = dummyCart.map((i) => {
+        return (
+            <CartItem
+                key={Object.keys(i).toString()}
+                id={Object.keys(i).toString()}
+                quantity={Object.values(i)}
+                fishList={fishList}
+            />
+        )
+    })
+
+    const cartTotal = () => {
+        let total = 0
+        for ( let item of dummyCart ) {
+            let price = 0
+            let amount = parseInt(Object.values(item).toString())
+
+        }
+    }
+    cartTotal()
+
+    return (
+        <>
+            <Container align="center" sx={{ mt: 3 }}>
+                <Grid sx={{ width: '320px' }}>
+                    <CardActionArea component="a" href="#">
+                        {/* cartList goes here */}
+                        {cartList}
+                    </CardActionArea>
+                </Grid>
+
+                <Grid sx={{ m: 2 }} >
+                    <Typography sx={{ mb: 2 }}>
+                        Total:
+                    </Typography>
+                    <Link to='/checkout' style={{ textDecoration: 'none' }}>
+                        <Button variant="contained" size="large">Proceed to Payment</Button>
+                    </Link>
+                </Grid>
+            </Container>
+        </>
     )
 }
 
