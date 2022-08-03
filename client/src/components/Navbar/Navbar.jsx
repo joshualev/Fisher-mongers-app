@@ -128,7 +128,7 @@ export default function PrimarySearchAppBar(props) {
                   color="inherit"
                   sx={{ mt: 0.75 }}>
                   <Badge
-                    badgeContent={props.cart.length}
+                    badgeContent={props.cart.totalQuantity}
                     color="error"
                     sx={{ mr: 2 }}>
                     <ShoppingCartIcon />

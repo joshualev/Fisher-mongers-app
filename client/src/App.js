@@ -16,8 +16,11 @@ import ProtectedRoute from './components/Protected/Protected'
 const App = () => {
   const [fishList, setFishList] = useState(null)
   const [authorised, setAuthorised] = useState(null)
-  const [cart, setCart] = useState([])
-  const [cartTotal, setCartTotal] = useState(0)
+  const [cart, setCart] = useState({
+    items: [],
+    totalQuantity: 0,
+    subTotal: 0
+})
   const navigate = useNavigate()
 
   const getFish = async () => {
@@ -31,19 +34,6 @@ const App = () => {
     getFish()
   }, [])
 
-
-
-  useEffect(() => {
-    const changeCartTotal = () => {
-      let newCartTotal = 0
-      cart.map((i) => {
-        newCartTotal = newCartTotal + (i.f.price * i.q)
-      })
-      setCartTotal(newCartTotal)
-    }
-    changeCartTotal()
-  }, [cart])
-
   const handleAuth = (authed) => {
     console.log(authed)
     setAuthorised(authed)
@@ -55,19 +45,43 @@ const App = () => {
     navigate("/")
   }
 
+  // Adds item to cart with the current counter quantity
   const addToCart = (fish, quantity) => {
-    const newItem = { f: fish, q: quantity }
-    setCart([
-      ...cart,
-      newItem
-    ])
+    const inCart = (fish) => cart.items.find((item) => item._id === fish._id)
+    let items
+
+    if (fish.stock < 1) return
+
+    if (!cart.items.length || !inCart(fish)) {
+      items = [...cart.items, { ...fish, cartQuantity: quantity }]
+    } else {
+      items = cart.items.map((item) => {
+        if (fish._id !== item._id) return item
+        return { ...item, cartQuantity: item.cartQuantity + quantity }
+      })
+    }
+
+    const totals = items.reduce((obj, item) => {
+      obj.totalQuantity += item.cartQuantity
+      obj.subTotal += item.price * item.cartQuantity
+      return obj
+    }, { totalQuantity: 0, subTotal: 0 })
+
+    setCart({ items, ...totals })
   }
 
-  const removeFromCart = (item, quantity) => {
-    console.log(item, quantity);
+  const removeFromCart = (item) => {
+    const newCartItems = cart.items.filter((fish) => fish._id !== item._id)
+    
+    const totals = newCartItems.reduce((obj, item) => {
+      obj.totalQuantity += item.cartQuantity
+      obj.subTotal += item.price * item.cartQuantity
+      return obj
+    }, { totalQuantity: 0, subTotal: 0 })
+
+    setCart({ items: newCartItems, ...totals })
   }
 
-  // Activate once login route is working
   useEffect(() => {
     const checkIfLoggedIn = async () => {
       const res = await fetch('/users/isauthorised')
@@ -183,7 +197,8 @@ const App = () => {
           path='/cart'
           element={fishList && <Cart
             cart={cart}
-            cartTotal={cartTotal}
+            cartTotal={cart.subTotal}
+            removeFromCart={removeFromCart}
           />}
         />
         <Route
