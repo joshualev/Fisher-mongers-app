@@ -1,15 +1,11 @@
 import React from 'react'
-import Logo from '../../hooked-cropped.svg'
+import Logo from '../../hooked-green.svg'
 import Grid from '@mui/material/Grid';
 import Product from './Product/Product'
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import PhishingIcon from '@mui/icons-material/Phishing';
-import Badge from '@mui/material/Badge'
-import Searchbar from '../Navbar/Searchbar'
 import CardMedia from '@mui/material/CardMedia'
 import { useState, useEffect } from "react"
-import Card from '@mui/material/Card'
 import Box from '@mui/material/Box'
 const Products = ({ fishList, addToCart, removeFromCart }) => {
     
@@ -23,7 +19,7 @@ const Products = ({ fishList, addToCart, removeFromCart }) => {
                     sx={{ justifyContent: 'center', alignItems:"center"}}
                 >
                     <>
-                    <Container align="center"  >
+                    <Container align="center" >
                         <Box sx={{width:500}}>
                             <CardMedia
                                 image={Logo}

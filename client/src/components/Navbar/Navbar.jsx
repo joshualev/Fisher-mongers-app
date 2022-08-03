@@ -9,7 +9,7 @@ import Badge from '@mui/material/Badge';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Button from '@mui/material/Button'
-import Logo from '../../hooked-new-cropped.svg'
+import Logo from '../../hooked-green.svg'
 
 export default function Navbar(props) {
   
