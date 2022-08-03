@@ -11,6 +11,7 @@ import SignUp from './components/User/SignUp'
 import Edit from './components/Edit/Edit'
 import SignOut from './components/User/SignOut'
 import Cart from './components/Checkout/Cart/Cart'
+import ProtectedRoute from './components/Protected/Protected'
 
 const App = () => {
   const [fishList, setFishList] = useState(null)
@@ -30,6 +31,7 @@ const App = () => {
 
 
   const handleAuth = (authed) => {
+    console.log(authed)
     setAuthorised(authed)
     navigate("/")
   }
@@ -89,9 +91,12 @@ const App = () => {
     if (res.ok) {
       const updatedFish = await res.json()
       // console.log(updatedFish)
+      const fishIndex = fishList.map((fish => fish._id === updatedFish._id)).indexOf(true)
+      console.log(fishIndex)
       setFishList([
-        ...fishList,
-        updatedFish
+        ...fishList.splice(0, fishIndex),
+        updatedFish,
+        ...fishList.splice(fishIndex+1)
       ])
       navigate(`/${updatedFish._id}`)
     } else {
@@ -104,7 +109,7 @@ const App = () => {
     const res = await fetch(`http://localhost:4000/fish/${fishIDToDelete}`, {
       method: "DELETE",
       headers: {
-        "Content-Type" : "application/json"
+        "Content-Type": "application/json"
       }
     })
     setFishList(fishList.filter((fish) => fish._id !== fishIDToDelete))
@@ -127,11 +132,17 @@ const App = () => {
           element={fishList && <Show
             fishList={fishList}
             handleDelete={handleDelete}
+            authorised={authorised}
           />}
         />
         <Route
           path="/new"
-          element={<Create handleNewFish={handleNewFish} />}
+          element={
+            <ProtectedRoute authorised={authorised}>
+              <Create handleNewFish={handleNewFish}
+              />
+            </ProtectedRoute>
+          }
         />
         <Route
           path='/cart'
@@ -146,16 +157,12 @@ const App = () => {
           />}
         />
         <Route
-          path='/signin'
-          element={<SignIn />}
-        />
-        <Route
-          path='/signup'
-          element={<SignUp />}
-        />
-        <Route
           path='/edit/:fishID'
-          element={fishList && <Edit fishList={fishList} handleEdit={handleEdit} />}
+          element={
+            <ProtectedRoute authorised={authorised}>
+              {fishList && <Edit fishList={fishList} handleEdit={handleEdit} />}
+            </ProtectedRoute>
+          }
         />
         <Route
           path='/signin'

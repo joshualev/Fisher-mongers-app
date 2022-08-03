@@ -14,7 +14,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import DeleteIcon from "@mui/icons-material/Delete"
 
-const Show = ({ fishList, handleDelete }) => {
+const Show = ({ fishList, handleDelete, authorised }) => {
   const [counter, setCounter] = useState()
   const params = useParams()
   const fish = fishList.find((f) => f._id === params.fishID)
@@ -117,14 +117,14 @@ const Show = ({ fishList, handleDelete }) => {
                 <Button onClick={handleClick} name="add" sx={{ mt: 1, width: '100%' }} variant="contained" color="primary">Add to cart</Button>
               </div>
             </Card>
-            <Card sx={{ mb: 1, width: 169 }}>
+            { authorised && <Card sx={{ mb: 1, width: 169 }}>
               <div>
-                <Button onClick={handleUpdate} name="minus"  variant="outlined" size="medium" color="success" sx={{ width: '100%' }}>Update</Button>
+                <Button onClick={handleUpdate} name="update"  variant="outlined" size="medium" color="success" sx={{ width: '100%' }}>Update</Button>
               </div>    
               <div>
                 <Button onClick={() => handleDelete(fish._id)} name="delete" sx={{ mt: 1, width: '100%' }} variant="outlined" color="error" startIcon={<DeleteIcon />} >Delete</Button>
               </div>
-            </Card>
+            </Card>}
           </CardActions>
         </Card>
       </Container>
