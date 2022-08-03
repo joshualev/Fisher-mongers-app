@@ -57,11 +57,11 @@ const Product = ({ fish, addToCart }) => {
           <div sx={{ mb: 1 }}>
             <Button
               sx={{ pt: 0.25, pb: 0.25 }}
-              variant="contained"
+              variant="outlined"
               size="medium"
               onClick={handleClick}
               name="minus"
-              color="inherit">-
+              color="primary">-
 
             </Button>
             <Typography
@@ -71,9 +71,9 @@ const Product = ({ fish, addToCart }) => {
             </Typography>
             <Button
               sx={{ pt: 0.25, pb: 0.25 }}
-              variant="contained"
+              variant="outlined"
               size="medium"
-              color="inherit"
+              color="primary"
               onClick={handleClick}
               name="plus">+
             </Button>
@@ -83,7 +83,7 @@ const Product = ({ fish, addToCart }) => {
                 size="large"
                 variant="contained"
                 color="primary"
-                sx={{ my: 1 }}
+                sx={{ my: 1, color: "white" }}
               >
                 <ShoppingCartIcon sx={{ mr: 1 }} />
                 Add to cart

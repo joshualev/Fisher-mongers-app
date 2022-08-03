@@ -97,7 +97,7 @@ export default function PrimarySearchAppBar(props) {
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <Button>
-          Account
+          Sign out
         </Button>
       </MenuItem>
     </Menu>
@@ -112,10 +112,10 @@ export default function PrimarySearchAppBar(props) {
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               <Link to='/cart' style={{ textDecoration: "none" }}>
                 <Button
-                  variant="outlined"
+                  variant="contained"
                   size="small"
                   aria-label="Show cart items"
-                  color="lighter"
+                  color="primary"
                   sx={{ mt: 0.75 }}>
                   <Badge
                     badgeContent={props.cart.totalQuantity}
@@ -135,10 +135,10 @@ export default function PrimarySearchAppBar(props) {
                 variant="text"
                 color="lighter"
               >
-                <AccountCircle sx={{ mr: 2 }} /> Account
+              <AccountCircle sx={{ mr: 2 }} /> Sign out
               </Button>
-            </Box>
-            <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+              </Box>
+              <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
               <IconButton
                 size="large"
                 aria-label="show more"
