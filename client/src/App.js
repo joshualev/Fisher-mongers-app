@@ -223,10 +223,6 @@ const App = () => {
           path='/signup'
           element={<SignUp handleRegister={handleAuth} />}
         />
-        <Route
-          path="/signout"
-          element={<SignOut handleSignout={handleLogout} />}
-        />
       </Routes>
       <Footer />
 
