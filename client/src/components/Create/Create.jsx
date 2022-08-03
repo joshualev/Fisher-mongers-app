@@ -36,7 +36,7 @@ const Create = (props) => {
         <Container
           maxWidth="med"
           align="center"
-          sx={{ mt: 2 }}>
+          sx={{ mt: 2, pb:10}}>
           <Typography component="h1" variant="h3" sx={{ mb: 2 }}>Add A New Item</Typography>
 
           <form onSubmit={handleSubmit((data) => {
