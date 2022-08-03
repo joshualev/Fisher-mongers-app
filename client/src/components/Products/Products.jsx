@@ -19,8 +19,13 @@ const Products = ({ fishList, addToCart, removeFromCart }) => {
                     sx={{ justifyContent: 'center', alignItems:"center"}}
                 >
                     <>
+<<<<<<< HEAD
                     <Container align="center" >
                         <Box sx={{width:500}}>
+=======
+                    <Container align="center"  >
+                        <Box sx={{width:350}}>
+>>>>>>> 681a2cd40c3c5bdb5761f61f6598564bd0a9a463
                             <CardMedia
                                 image={Logo}
                                 align="center"

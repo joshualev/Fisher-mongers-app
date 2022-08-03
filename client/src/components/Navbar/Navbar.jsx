@@ -52,7 +52,10 @@ export default function Navbar(props) {
                 aria-label="account of current user"
                 variant="text"
                 color="primary"
+<<<<<<< HEAD
                 onClick={handleClick}
+=======
+>>>>>>> 681a2cd40c3c5bdb5761f61f6598564bd0a9a463
               >
                 <AccountCircle sx={{ mr: 2 }} /> Sign out
               </Button>
@@ -103,10 +106,6 @@ export default function Navbar(props) {
             <Button
               sx={{ p: 3 }} >
               Specials
-            </Button>
-            <Button
-              sx={{ p: 3 }} >
-              Whats on
             </Button>
             {props.authorised && <NavLink to="/new" style={{ textDecoration: 'none' }}>
               <Button
