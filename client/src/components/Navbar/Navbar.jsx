@@ -14,8 +14,8 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PhishingIcon from '@mui/icons-material/Phishing';
 import Button from '@mui/material/Button'
-
-
+import Logo from '../../hooked-cropped.svg'
+import Grid from '@mui/material/Grid'
 
 
 export default function PrimarySearchAppBar(props) {
@@ -105,30 +105,20 @@ export default function PrimarySearchAppBar(props) {
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
+        <AppBar position="static" color="default">
           <Toolbar>
-            <Badge badgeContent={<PhishingIcon />}
-            >
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{ display: { xs: 'none', sm: 'block' } }}
-              >
-                Hooked
-              </Typography>
-            </Badge>
-
+            <img src={Logo}></img>    
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               <Link to='/cart' style={{ textDecoration: "none" }}>
                 <Button
-                  variant="contained"
+                  variant="outlined"
                   size="small"
                   aria-label="Show cart items"
-                  color="inherit"
+                  color="primary"
                   sx={{ mt: 0.75 }}>
                   <Badge
-                    badgeContent={props.cart.length}
+                    badgeContent={props.cart.totalQuantity}
                     color="error"
                     sx={{ mr: 2 }}>
                     <ShoppingCartIcon />
@@ -142,7 +132,8 @@ export default function PrimarySearchAppBar(props) {
                 aria-controls={menuId}
                 aria-haspopup="true"
                 onClick={handleProfileMenuOpen}
-                color="inherit"
+                variant="text"
+                color="primary"
               >
                 <AccountCircle sx={{ mr: 2 }} /> Account
               </Button>
@@ -167,7 +158,7 @@ export default function PrimarySearchAppBar(props) {
 
       <AppBar
         position="static"
-        color="default"
+        color="inherit"
         elevation={0}
       >
         <Toolbar sx={{ flexWrap: 'wrap' }}>
@@ -182,6 +173,7 @@ export default function PrimarySearchAppBar(props) {
                 Home
               </Button>
             </NavLink>
+            
             <Button
               sx={{ p: 3 }} >
               Categories
