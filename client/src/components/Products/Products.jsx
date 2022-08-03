@@ -37,7 +37,7 @@ const Products = ({ fishList, addToCart, removeFromCart }) => {
                         align="center"
                         color="text.secondary"
                         component="p">
-                        A collection of local, sustainable seafood
+                        A collection of locally caught, sustainable seafood
                     </Typography>
                 </Container>
                 {/* End hero unit */}

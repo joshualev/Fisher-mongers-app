@@ -29,7 +29,6 @@ const App = () => {
     getFish()
   }, [])
 
-
   const handleAuth = (authed) => {
     setAuthorised(authed)
     navigate("/")
@@ -44,7 +43,10 @@ const App = () => {
     console.log(fishID, quantity);
     const newItem = { [fishID]: quantity }
     console.log(newItem);
-    setCart([newItem]) // <- Why not working?
+    setCart([
+      ...cart,
+      newItem
+    ]) // <- Why not working?
     console.log(cart);
   }
 
@@ -63,9 +65,6 @@ const App = () => {
     checkIfLoggedIn()
   }, [])
 
-  useEffect(() => {
-    getFish()
-  }, [])
 
   const handleNewFish = async (createdFish) => {
     if (createdFish.imageURL === "") {
@@ -141,7 +140,7 @@ const App = () => {
         <Route
           path='/cart'
           element={fishList && <Cart
-            fishList={fishList}
+            fishList={fishList} cart={cart}
           />}
         />
         <Route
