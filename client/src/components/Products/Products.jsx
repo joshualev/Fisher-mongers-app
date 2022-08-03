@@ -23,7 +23,7 @@ const Products = ({ fishList, addToCart, removeFromCart }) => {
                     sx={{ justifyContent: 'center', alignItems:"center"}}
                 >
                     <>
-                    <Container align="center" justifyContent="center" >
+                    <Container align="center"  >
                         <Box sx={{width:500}}>
                             <CardMedia
                                 image={Logo}
