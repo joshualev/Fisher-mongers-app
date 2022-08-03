@@ -14,7 +14,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PhishingIcon from '@mui/icons-material/Phishing';
 import Button from '@mui/material/Button'
-import Logo from '../../hooked-cropped.svg'
+import Logo from '../../hooked-new-cropped.svg'
 import Grid from '@mui/material/Grid'
 
 
