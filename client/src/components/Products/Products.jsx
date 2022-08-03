@@ -5,6 +5,7 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import PhishingIcon from '@mui/icons-material/Phishing';
 import Badge from '@mui/material/Badge'
+import Searchbar from '../Navbar/Searchbar'
 import { useState, useEffect } from "react"
 const Products = ({ fishList, addToCart, removeFromCart }) => {
     
@@ -15,6 +16,7 @@ const Products = ({ fishList, addToCart, removeFromCart }) => {
                 <Container
                     disableGutters
                     maxWidth="md"
+                    
                     sx={{ pt: 3, pb: 6, justifyContent: 'center' }}>
                     <Typography
                         component="h1"

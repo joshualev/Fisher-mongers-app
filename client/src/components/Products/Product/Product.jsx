@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from "react"
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box'
@@ -9,7 +10,6 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import IconButton from '@mui/material/IconButton';
-import { useState, useEffect } from "react"
 
 const Product = ({ fish, addToCart }) => {
   const [counter, setCounter] = useState()

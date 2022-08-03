@@ -116,7 +116,9 @@ const App = () => {
 
   return (
     <div>
-      <Navbar />
+      { fishList &&
+        <Navbar fishList={fishList}/>
+      }
 
       <Routes>
         <Route
