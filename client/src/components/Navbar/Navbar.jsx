@@ -133,7 +133,7 @@ export default function PrimarySearchAppBar(props) {
                 aria-haspopup="true"
                 onClick={handleProfileMenuOpen}
                 variant="text"
-                color="lighter"
+                color="primary"
               >
               <AccountCircle sx={{ mr: 2 }} /> Sign out
               </Button>
@@ -181,10 +181,6 @@ export default function PrimarySearchAppBar(props) {
             <Button
               sx={{ p: 3 }} >
               Specials
-            </Button>
-            <Button
-              sx={{ p: 3 }} >
-              Whats on
             </Button>
             {props.authorised && <NavLink to="/new" style={{ textDecoration: 'none' }}>
               <Button
