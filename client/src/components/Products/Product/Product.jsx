@@ -29,7 +29,7 @@ const Product = ({ fish, addToCart }) => {
   }
 
   const handleAddToCart = () => {
-    addToCart(fish._id, counter)
+    addToCart(fish, counter)
   }
 
   return (

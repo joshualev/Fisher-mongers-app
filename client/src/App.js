@@ -39,15 +39,14 @@ const App = () => {
     navigate("/")
   }
 
-  const addToCart = (fishID, quantity) => {
-    console.log(fishID, quantity);
-    const newItem = { [fishID]: quantity }
+  const addToCart = (fish, quantity) => {
+    console.log(fish, quantity);
+    const newItem = { f: fish, q: quantity }
     console.log(newItem);
     setCart([
       ...cart,
       newItem
-    ]) // <- Why not working?
-    console.log(cart);
+    ])
   }
 
   const removeFromCart = (item, quantity) => {

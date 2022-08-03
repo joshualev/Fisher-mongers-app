@@ -9,8 +9,8 @@ import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import CardActionArea from '@mui/material/CardActionArea';
 
-const CartItem = ({ id, quantity, fishList }) => {
-    const fish = fishList.find((f) => f._id === id)
+const CartItem = ({ fish, quantity }) => {
+
     return (
         <div>
             <Card sx={{ display: 'flex' }}>
@@ -37,27 +37,26 @@ const CartItem = ({ id, quantity, fishList }) => {
 }
 
 const Cart = ({ fishList, cart }) => {
-    const dummyCart = [
-        { '62e856b9c97e3f6ee496084f': 2 },
-        { '62e856b9c97e3f6ee4960853': 1 },
-        { '62e856b9c97e3f6ee4960856': 3 }
-    ]
+    // const dummyCart = [
+    //     { '62e856b9c97e3f6ee496084f': 2 },
+    //     { '62e856b9c97e3f6ee4960853': 1 },
+    //     { '62e856b9c97e3f6ee4960856': 3 }
+    // ]
 
-    const cartList = dummyCart.map((i) => {
+    const cartList = cart.map((i) => {
         return (
             <CartItem
                 key={Object.keys(i).toString()}
-                id={Object.keys(i).toString()}
-                quantity={Object.values(i)}
-                fishList={fishList}
+                fish={i.f}
+                quantity={i.q}
             />
         )
     })
 
     const cartTotal = () => {
         let total = 0
-        for ( let item of dummyCart ) {
-            let price = 0
+        for ( let item of cart ) {
+            let price = fishList.find((f) => f._id)
             let amount = parseInt(Object.values(item).toString())
 
         }
