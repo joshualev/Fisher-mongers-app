@@ -10,7 +10,9 @@ import Grid from '@mui/material/Grid'
 import CardActionArea from '@mui/material/CardActionArea';
 
 const CartItem = ({ id, quantity, fishList }) => {
+    console.log(id)
     const fish = fishList.find((f) => f._id === id)
+    console.log(fish)
     return (
         <div>
             <Card sx={{ display: 'flex' }}>
