@@ -10,7 +10,9 @@ import Grid from '@mui/material/Grid'
 import CardActionArea from '@mui/material/CardActionArea';
 
 const CartItem = ({ id, quantity, fishList }) => {
+    console.log(id)
     const fish = fishList.find((f) => f._id === id)
+    console.log(fish)
     return (
         <div>
             <Card sx={{ display: 'flex' }}>
@@ -38,9 +40,9 @@ const CartItem = ({ id, quantity, fishList }) => {
 
 const Cart = ({ fishList, cart }) => {
     const dummyCart = [
-        { '62e856b9c97e3f6ee496084f': 2 },
-        { '62e856b9c97e3f6ee4960853': 1 },
-        { '62e856b9c97e3f6ee4960856': 3 }
+        { '62e890b63f19e97844f6c175': 2 },
+        { '62e890b63f19e97844f6c177': 1 },
+        { '62e890b63f19e97844f6c17a': 3 }
     ]
 
     const cartList = dummyCart.map((i) => {
