@@ -105,7 +105,7 @@ export default function PrimarySearchAppBar(props) {
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" color="default">
+        <AppBar position="static" color="secondary">
           <Toolbar>
             <img src={Logo}></img>    
             <Box sx={{ flexGrow: 1 }} />
@@ -115,7 +115,7 @@ export default function PrimarySearchAppBar(props) {
                   variant="outlined"
                   size="small"
                   aria-label="Show cart items"
-                  color="primary"
+                  color="lighter"
                   sx={{ mt: 0.75 }}>
                   <Badge
                     badgeContent={props.cart.totalQuantity}
@@ -133,7 +133,7 @@ export default function PrimarySearchAppBar(props) {
                 aria-haspopup="true"
                 onClick={handleProfileMenuOpen}
                 variant="text"
-                color="primary"
+                color="lighter"
               >
                 <AccountCircle sx={{ mr: 2 }} /> Account
               </Button>
