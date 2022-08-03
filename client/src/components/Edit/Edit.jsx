@@ -6,8 +6,6 @@ import { Container, Typography, CssBaseline, Button, TextField, InputAdornment, 
 const Edit = ({ fishList, handleEdit }) => {
   const { fishID } = useParams()
   const fish = fishList.find((f) => f._id === fishID )
-  
-  // const [fields, setFields ] = useState(fish)
 
   const {
     register,
@@ -25,10 +23,6 @@ const Edit = ({ fishList, handleEdit }) => {
       fontSize: 12,
     }
   })
-
-  // const updatefields = (event) => {
-  //   const { name, value } = 
-  // }
 
   return (
     <>

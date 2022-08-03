@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { useState, useEffect } from "react"
 import { useParams } from "react-router"
+import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -11,12 +12,15 @@ import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import DeleteIcon from "@mui/icons-material/Delete"
 
-const Show = ({ fishList }) => {
+const Show = ({ fishList, handleDelete, authorised }) => {
   const [counter, setCounter] = useState()
   const params = useParams()
   const fish = fishList.find((f) => f._id === params.fishID)
-  console.log(fish);
+  // console.log(fish);
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     setCounter(0)
@@ -30,6 +34,10 @@ const Show = ({ fishList }) => {
     } else if (event.target.name === "add") {
       console.log("Clicked 'Add to cart'");
     }
+  }
+
+  const handleUpdate = () => {
+    navigate(`/edit/${fish._id}`)
   }
 
   return (
@@ -96,6 +104,7 @@ const Show = ({ fishList }) => {
           </CardContent>
           <CardActions disableSpacing sx={{
             display: 'flex',
+            flexDirection: 'column',
             justifyContent: 'center'
           }}>
             <Card sx={{ mb: 1 }}>
@@ -108,6 +117,14 @@ const Show = ({ fishList }) => {
                 <Button onClick={handleClick} name="add" sx={{ mt: 1, width: '100%' }} variant="contained" color="primary">Add to cart</Button>
               </div>
             </Card>
+            { authorised && <Card sx={{ mb: 1, width: 169 }}>
+              <div>
+                <Button onClick={handleUpdate} name="update"  variant="outlined" size="medium" color="success" sx={{ width: '100%' }}>Update</Button>
+              </div>    
+              <div>
+                <Button onClick={() => handleDelete(fish._id)} name="delete" sx={{ mt: 1, width: '100%' }} variant="outlined" color="error" startIcon={<DeleteIcon />} >Delete</Button>
+              </div>
+            </Card>}
           </CardActions>
         </Card>
       </Container>
