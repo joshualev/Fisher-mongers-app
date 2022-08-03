@@ -17,7 +17,7 @@ const Products = ({ fishList, addToCart, removeFromCart }) => {
                     disableGutters
                     maxWidth="md"
                     
-                    sx={{ pt: 3, pb: 6, justifyContent: 'center' }}>
+                    sx={{ pt: 3, justifyContent: 'center' }}>
                     <Typography
                         component="h1"
                         variant="h2"
@@ -43,7 +43,7 @@ const Products = ({ fishList, addToCart, removeFromCart }) => {
                     </Typography>
                 </Container>
                 {/* End hero unit */}
-                <Grid sx={{ p: 10 }}
+                <Grid sx={{ p: 8 }}
                     container
                     justify="center"
                     spacing={4}>
