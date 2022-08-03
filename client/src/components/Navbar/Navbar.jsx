@@ -14,7 +14,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PhishingIcon from '@mui/icons-material/Phishing';
 import Button from '@mui/material/Button'
-import Logo from '../../hooked-cropped.svg'
+import Logo from '../../hooked-new-cropped.svg'
 import Grid from '@mui/material/Grid'
 
 
@@ -97,7 +97,7 @@ export default function PrimarySearchAppBar(props) {
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <Button>
-          Account
+          Sign out
         </Button>
       </MenuItem>
     </Menu>
@@ -105,14 +105,14 @@ export default function PrimarySearchAppBar(props) {
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" color="default">
+        <AppBar position="static" color="secondary">
           <Toolbar>
             <img src={Logo}></img>    
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               <Link to='/cart' style={{ textDecoration: "none" }}>
                 <Button
-                  variant="outlined"
+                  variant="contained"
                   size="small"
                   aria-label="Show cart items"
                   color="primary"
@@ -133,12 +133,12 @@ export default function PrimarySearchAppBar(props) {
                 aria-haspopup="true"
                 onClick={handleProfileMenuOpen}
                 variant="text"
-                color="primary"
+                color="lighter"
               >
-                <AccountCircle sx={{ mr: 2 }} /> Account
+              <AccountCircle sx={{ mr: 2 }} /> Sign out
               </Button>
-            </Box>
-            <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+              </Box>
+              <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
               <IconButton
                 size="large"
                 aria-label="show more"

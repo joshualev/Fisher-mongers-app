@@ -9,9 +9,26 @@ import Footer from './components/Footer/Footer'
 import SignIn from './components/User/SignIn'
 import SignUp from './components/User/SignUp'
 import Edit from './components/Edit/Edit'
-import SignOut from './components/User/SignOut'
 import Cart from './components/Checkout/Cart/Cart'
 import ProtectedRoute from './components/Protected/Protected'
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#086972"
+    },
+    secondary: {
+      main: '#0fc1d1'
+    },
+    lighter: {
+      main: "#ffffff"
+    },
+    default: {
+      main: "#0b95a2"
+    }
+  }
+});
 
 const App = () => {
   const [fishList, setFishList] = useState(null)
@@ -20,7 +37,7 @@ const App = () => {
     items: [],
     totalQuantity: 0,
     subTotal: 0
-})
+  })
   const navigate = useNavigate()
 
   const getFish = async () => {
@@ -72,7 +89,7 @@ const App = () => {
 
   const removeFromCart = (item) => {
     const newCartItems = cart.items.filter((fish) => fish._id !== item._id)
-    
+
     const totals = newCartItems.reduce((obj, item) => {
       obj.totalQuantity += item.cartQuantity
       obj.subTotal += item.price * item.cartQuantity
@@ -122,29 +139,29 @@ const App = () => {
   }
 
   const handleEdit = async (editedFish) => {
-    console.log("Edited fish: ", editedFish)
-  //   const res = await fetch(`http://localhost:4000/fish/${editedFish._id}`, {
-  //     method: "PUT",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify(editedFish)
-  //   })
-  //   // console.log(res.ok)
-  //   if (res.ok) {
-  //     const updatedFish = await res.json()
-  //     // console.log(updatedFish)
-  //     const fishIndex = fishList.map((fish => fish._id === updatedFish._id)).indexOf(true)
-  //     console.log(fishIndex)
-  //     setFishList([
-  //       ...fishList.splice(0, fishIndex),
-  //       updatedFish,
-  //       ...fishList.splice(fishIndex+1)
-  //     ])
-  //     navigate(`/${updatedFish._id}`)
-  //   } else {
-  //     console.log("error updating the fish")
-  //   }
+    // console.log("Edited fish: ", editedFish)
+    const res = await fetch(`http://localhost:4000/fish/${editedFish._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(editedFish)
+    })
+    // console.log(res.ok)
+    if (res.ok) {
+      const updatedFish = await res.json()
+      // console.log(updatedFish)
+      const fishIndex = fishList.map((fish => fish._id === updatedFish._id)).indexOf(true)
+      console.log(fishIndex)
+      setFishList([
+        ...fishList.splice(0, fishIndex),
+        updatedFish,
+        ...fishList.splice(fishIndex + 1)
+      ])
+      navigate(`/${updatedFish._id}`)
+    } else {
+      console.log("error updating the fish")
+    }
   }
 
   const handleDelete = async (fishIDToDelete) => {
@@ -160,76 +177,78 @@ const App = () => {
   }
 
   return (
-    <div>
-      { fishList &&
-        <Navbar 
-          fishList={fishList} 
-          authorised={authorised} 
-          handleLogout={handleLogout}
-          cart={cart}
-        />
-      }
-
-      <Routes>
-        <Route
-          path='/'
-          element={fishList && <Products
-            addToCart={addToCart}
-            removeFromCart={removeFromCart}
-            fishList={fishList} 
-          />}
-        />
-        <Route
-          path='/:fishID'
-          element={fishList && <Show
+    <ThemeProvider theme={theme}>
+      <div>
+        {fishList &&
+          <Navbar
             fishList={fishList}
-            handleDelete={handleDelete}
             authorised={authorised}
-          />}
-        />
-        <Route
-          path="/new"
-          element={
-            <ProtectedRoute authorised={authorised}>
-              <Create handleNewFish={handleNewFish}
-              />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path='/cart'
-          element={fishList && <Cart
+            handleLogout={handleLogout}
             cart={cart}
-            cartTotal={cart.subTotal}
-            removeFromCart={removeFromCart}
-          />}
-        />
-        <Route
-          path='/checkout'
-          element={fishList && <Checkout
-            fishList={fishList}
-          />}
-        />
-        <Route
-          path='/edit/:fishID'
-          element={
-            <ProtectedRoute authorised={authorised}>
-              {fishList && <Edit fishList={fishList} handleEdit={handleEdit} />}
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path='/signin'
-          element={<SignIn handleLogin={handleAuth} />}
-        />
-        <Route
-          path='/signup'
-          element={<SignUp handleRegister={handleAuth} />}
-        />
-      </Routes>
-      <Footer />
+          />
+        }
 
-    </div>
+        <Routes>
+          <Route
+            path='/'
+            element={fishList && <Products
+              addToCart={addToCart}
+              removeFromCart={removeFromCart}
+              fishList={fishList}
+            />}
+          />
+          <Route
+            path='/:fishID'
+            element={fishList && <Show
+              fishList={fishList}
+              handleDelete={handleDelete}
+              authorised={authorised}
+            />}
+          />
+          <Route
+            path="/new"
+            element={
+              <ProtectedRoute authorised={authorised}>
+                <Create handleNewFish={handleNewFish}
+                />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/cart'
+            element={fishList && <Cart
+              cart={cart}
+              cartTotal={cart.subTotal}
+              removeFromCart={removeFromCart}
+            />}
+          />
+          <Route
+            path='/checkout'
+            element={fishList && <Checkout
+              fishList={fishList}
+            />}
+          />
+          <Route
+            path='/edit/:fishID'
+            element={
+              <ProtectedRoute authorised={authorised}>
+                {fishList && <Edit fishList={fishList} handleEdit={handleEdit} />}
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/signin'
+            element={<SignIn handleLogin={handleAuth} />}
+          />
+          <Route
+            path='/signup'
+            element={<SignUp handleRegister={handleAuth} />}
+          />
+        </Routes>
+        <Footer />
+
+      </div>
+    </ThemeProvider>
   )
 }
 
