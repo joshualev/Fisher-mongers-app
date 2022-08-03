@@ -98,7 +98,6 @@ export default function PrimarySearchAppBar(props) {
       </MenuItem>
     </Menu>
   );
-
   return (
     <>
     <Box sx={{ flexGrow: 1 }}>

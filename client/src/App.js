@@ -50,9 +50,6 @@ const App = () => {
     checkIfLoggedIn()
   }, [])
 
-  useEffect(() => {
-    getFish()
-  }, [])
 
   const handleNewFish = async (createdFish) => {
     if (createdFish.imageURL === "") {

@@ -48,17 +48,22 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   }));
 
-
 const Searchbar = ( { fishList }) => {
   const [filteredData, setFilteredData] = useState([])
-  
   const handleFilter = (e) => {
     const searchWord = e.target.value
     const newFilter = fishList.filter((value) => {
       return value.species.includes(searchWord)
     })
+    if(searchWord.length !== 0){
     setFilteredData(newFilter)
+    } else {
+      setFilteredData([])
+    }
   }
+
+
+
   return (
     <>
     <Search>
