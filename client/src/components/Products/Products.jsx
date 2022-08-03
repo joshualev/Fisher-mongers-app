@@ -24,7 +24,7 @@ const Products = ({ fishList, addToCart, removeFromCart }) => {
                 >
                     <>
                     <Container align="center"  >
-                        <Box sx={{width:500}}>
+                        <Box sx={{width:350}}>
                             <CardMedia
                                 image={Logo}
                                 align="center"
