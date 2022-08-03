@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from '../../hooked.svg'
+import Logo from '../../hooked-cropped.svg'
 import Grid from '@mui/material/Grid';
 import Product from './Product/Product'
 import Container from '@mui/material/Container';
@@ -10,6 +10,7 @@ import Searchbar from '../Navbar/Searchbar'
 import CardMedia from '@mui/material/CardMedia'
 import { useState, useEffect } from "react"
 import Card from '@mui/material/Card'
+import Box from '@mui/material/Box'
 const Products = ({ fishList, addToCart, removeFromCart }) => {
     
     return (
@@ -19,30 +20,34 @@ const Products = ({ fishList, addToCart, removeFromCart }) => {
                 <Container 
                     disableGutters
                     maxWidth="md" 
-                    sx={{ justifyContent: 'center' }}
+                    sx={{ justifyContent: 'center', alignItems:"center"}}
                 >
-                    <Grid sx={{mt:-12}}>
-                     <CardMedia
-                        image={Logo}
-                        sx={{ 
-                            height: 0,
-                            paddingTop: '56.25%',
-                            backgroundSize: 'cover',
-                            backgroundRepeat: 'no-repeat',
-                            backgroundPosition: 'center'
-                        }} 
-                       
-                     />
-                      </Grid>
-                    <Typography
-                        sx={{mt:-3}}
-                        variant="h5"
-                        align="center"
-                        color="text.secondary"
-                        component="p">
-                        A collection of locally caught, sustainable seafood
-                    </Typography>
-                    {/* </Grid> */}
+                    <>
+                    <Container align="center"  >
+                        <Box sx={{width:500}}>
+                            <CardMedia
+                                image={Logo}
+                                align="center"
+                                sx={{ 
+                                    paddingTop: '56.25%',
+                                    backgroundSize: 'cover',
+                                    backgroundRepeat: 'no-repeat',
+                                    backgroundPosition: 'center'
+                                }} 
+                            
+                            />
+                        
+                            <Typography
+                                sx={{mt:3}}
+                                variant="h5"
+                                align="center"
+                                color="text.secondary"
+                                component="p">
+                                A collection of locally caught, sustainable seafood
+                            </Typography>
+                        </Box>
+                    </Container>
+                    </>
                 </Container>
                 {/* End hero unit */}
                 <Grid sx={{ p: 8 }}
