@@ -9,8 +9,10 @@ import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import CardActionArea from '@mui/material/CardActionArea';
 
-const CartItem = ({ fish, quantity }) => {
-
+const CartItem = ({ fish, removeFromCart }) => {
+    const handleClick = () => {
+        removeFromCart(fish)
+    }
     return (
         <div>
             <Card sx={{ display: 'flex' }}>
@@ -19,11 +21,14 @@ const CartItem = ({ fish, quantity }) => {
                         { fish.species }
                     </Typography>
                     <Typography variant="subtitle1" color="text.secondary">
-                        ${ fish.price }
+                        ${(fish.price * fish.cartQuantity).toFixed(2)}
                     </Typography>
                     <Typography variant="subtitle1" color="text.secondary">
-                        In cart: {quantity}
+                        In cart: {fish.cartQuantity}
                     </Typography>
+                    <div>
+                        <Button onClick={handleClick} name="remove" sx={{ mt: 1, width: '100%' }} variant="outlined" color="error" >REMOVE</Button>
+                    </div>
                 </CardContent>
                 <CardMedia
                     component="img"
@@ -36,18 +41,19 @@ const CartItem = ({ fish, quantity }) => {
     )
 }
 
-const Cart = ({ cart, cartTotal }) => {
+const Cart = ({ cart, removeFromCart }) => {
     let emptyCart = ""
-    if (cart.length === 0) {
+    if (cart.items.length === 0) {
         emptyCart = "There is nothing in your cart yet"
     }
 
-    const cartList = cart.map((i) => {
+    const cartList = cart.items.map((i) => {
+        
         return (
             <CartItem
                 key={i._id}
-                fish={i.f}
-                quantity={i.q}
+                fish={i}
+                removeFromCart={removeFromCart}
             />
         )
     })
@@ -64,7 +70,7 @@ const Cart = ({ cart, cartTotal }) => {
 
                 <Grid sx={{ m: 2 }} >
                     <Typography sx={{ mb: 2 }}>
-                        Total: ${cartTotal}
+                        Total: ${cart.subTotal.toFixed(2)}
                     </Typography>
                     <Link to='/checkout' style={{ textDecoration: 'none' }}>
                         <Button variant="contained" size="large">Proceed to Payment</Button>
