@@ -59,7 +59,7 @@ const Show = ({ fishList, handleDelete, authorised }) => {
       </Container> */}
       {/* End hero unit */}
 
-      <Container maxWidth="md" component="main" sx={{ width: '50%', align: 'center', justifyContent: 'center', pt:10, pb:10}}>
+      <Container maxWidth="sm" component="main" sx={{ width: '100%', align: 'center', justifyContent: 'center', pt:10, pb:10}}>
         <Card >
           <CardHeader
             title={fish.species}

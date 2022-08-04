@@ -4,40 +4,24 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
-
-
   
-  export default function Review() {
-    const products = [
-      {
-        name: 'Product 1',
-        desc: 'A nice thing',
-        price: '$9.99',
-      },
-      {
-        name: 'Product 2',
-        desc: 'Another thing',
-        price: '$3.45',
-      },
-      {
-        name: 'Product 3',
-        desc: 'Something else',
-        price: '$6.51',
-      },
-      {
-        name: 'Product 4',
-        desc: 'Best thing of all',
-        price: '$14.11',
-      },
-      { name: 'Shipping', desc: '', price: 'Free' },
-    ];
+  export default function Review({cart, addressState, paymentState}) {
+    const products = cart.items.map((i) => {
+      return (
+        {
+          name: i.species,
+          quantity: i.cartQuantity,
+          price: `$${i.price.toFixed(2)}`
+        }
+      )
+    })
     
-    const addresses = ['1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
+    const addresses = [addressState.address1, addressState.city, addressState.state, addressState.zip, addressState.country];
     const payments = [
       { name: 'Card type', detail: 'Visa' },
-      { name: 'Card holder', detail: 'Mr John Smith' },
-      { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
-      { name: 'Expiry date', detail: '04/2024' },
+      { name: 'Card holder', detail: paymentState.cardName },
+      { name: 'Card number', detail: paymentState.cardNumber },
+      { name: 'Expiry date', detail: paymentState.expDate },
     ];
     return (
       <React.Fragment>
@@ -47,7 +31,7 @@ import Grid from '@mui/material/Grid';
         <List disablePadding>
           {products.map((product) => (
             <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
-              <ListItemText primary={product.name} secondary={product.desc} />
+              <ListItemText primary={product.name} secondary={`${product.quantity} in cart`} />
               <Typography variant="body2">{product.price}</Typography>
             </ListItem>
           ))}
@@ -55,7 +39,7 @@ import Grid from '@mui/material/Grid';
           <ListItem sx={{ py: 1, px: 0 }}>
             <ListItemText primary="Total" />
             <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-              $34.06
+              ${cart.subTotal.toFixed(2)}
             </Typography>
           </ListItem>
         </List>
@@ -64,7 +48,7 @@ import Grid from '@mui/material/Grid';
             <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
               Shipping
             </Typography>
-            <Typography gutterBottom>John Smith</Typography>
+            <Typography gutterBottom>{addressState.firstName}</Typography>
             <Typography gutterBottom>{addresses.join(', ')}</Typography>
           </Grid>
           <Grid item container direction="column" xs={12} sm={6}>

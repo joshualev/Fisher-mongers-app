@@ -5,7 +5,6 @@ const session = require("express-session")
 const mongoDBSession = require("connect-mongodb-session")
 const cors = require('cors')
 
-
 const usersController = require("./controllers/Users")
 const fishController = require('./controllers/Fish')
 
@@ -49,7 +48,6 @@ app.use(cors({
 
 app.use('/users', usersController)
 app.use('/fish', fishController)
-
 
 mongoose.connect(dbURL, () => {
     console.log('🐟', 'connected to fish db', '🐠')

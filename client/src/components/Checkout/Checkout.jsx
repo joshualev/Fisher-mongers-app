@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from "react"
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
@@ -14,22 +15,32 @@ import Review from './Review';
 
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
-function getStepContent(step: number) {
+function getStepContent(step: number, cart, handleAddressSubmitStep, handlePaymentSubmitStep, addressState, paymentState) {
   switch (step) {
     case 0:
-      return <AddressForm />;
+      return <AddressForm handleAddressSubmitStep={handleAddressSubmitStep} addressState={addressState} />;
     case 1:
-      return <PaymentForm />;
+      return <PaymentForm handlePaymentSubmitStep={handlePaymentSubmitStep} paymentState={paymentState} />;
     case 2:
-      return <Review />;
+      return <Review addressState={addressState} paymentState={paymentState} cart={cart}  />;
     default:
       throw new Error('Unknown step');
   }
 }
 
 
-export default function Checkout() {
-  const [activeStep, setActiveStep] = React.useState(0);
+export default function Checkout({cart}) {
+  const [activeStep, setActiveStep] = useState(0);
+  const [addressState, setAddressState] = useState({})
+  const [paymentState, setPaymentState] = useState({})
+
+  const handleAddressSubmitStep = (fields) => {
+    setAddressState(fields)
+  }
+
+  const handlePaymentSubmitStep = (fields) => {
+    setPaymentState(fields)
+  }
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -56,7 +67,7 @@ export default function Checkout() {
             {activeStep === steps.length ? (
               <React.Fragment>
                 <Typography variant="h5" gutterBottom>
-                  Thank you for your order.
+                  Thanks for your order, {addressState.firstName}.
                 </Typography>
                 <Typography variant="subtitle1">
                   Your order number is #2001539. We have emailed your order
@@ -66,7 +77,7 @@ export default function Checkout() {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                {getStepContent(activeStep)}
+                {getStepContent(activeStep, cart, handleAddressSubmitStep, handlePaymentSubmitStep, addressState, paymentState)}
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
