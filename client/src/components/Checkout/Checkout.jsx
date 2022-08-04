@@ -15,14 +15,14 @@ import Review from './Review';
 
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
-function getStepContent(step: number, cart) {
+function getStepContent(step: number, cart, handleAddressSubmitStep, handlePaymentSubmitStep, addressState, paymentState) {
   switch (step) {
     case 0:
-      return <AddressForm />;
+      return <AddressForm handleAddressSubmitStep={handleAddressSubmitStep} addressState={addressState} />;
     case 1:
-      return <PaymentForm />;
+      return <PaymentForm handlePaymentSubmitStep={handlePaymentSubmitStep} paymentState={paymentState} />;
     case 2:
-      return <Review cart={cart}/>;
+      return <Review addressState={addressState} paymentState={paymentState} cart={cart}  />;
     default:
       throw new Error('Unknown step');
   }
@@ -31,7 +31,16 @@ function getStepContent(step: number, cart) {
 
 export default function Checkout({cart}) {
   const [activeStep, setActiveStep] = useState(0);
-  const [checkoutState, setCheckoutState] = useState({})
+  const [addressState, setAddressState] = useState({})
+  const [paymentState, setPaymentState] = useState({})
+
+  const handleAddressSubmitStep = (fields) => {
+    setAddressState(fields)
+  }
+
+  const handlePaymentSubmitStep = (fields) => {
+    setPaymentState(fields)
+  }
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -58,7 +67,7 @@ export default function Checkout({cart}) {
             {activeStep === steps.length ? (
               <React.Fragment>
                 <Typography variant="h5" gutterBottom>
-                  Thank you for your order.
+                  Thanks for your order, {addressState.firstName}.
                 </Typography>
                 <Typography variant="subtitle1">
                   Your order number is #2001539. We have emailed your order
@@ -68,7 +77,7 @@ export default function Checkout({cart}) {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                {getStepContent(activeStep, cart)}
+                {getStepContent(activeStep, cart, handleAddressSubmitStep, handlePaymentSubmitStep, addressState, paymentState)}
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
