@@ -54,13 +54,36 @@ const App = () => {
   const handleAuth = (authed) => {
     console.log(authed)
     setAuthorised(authed)
-    navigate("/")
+    if(authed) {
+      console.log('you successfully logged in!')
+      navigate("/")
+    } else {
+      console.log('incorrect username details')
+    }
+    
   }
 
   const handleLogout = () => {
     setAuthorised(false)
-    navigate("/")
+    navigate("/signin")
   }
+
+  const checkIfLoggedIn = async () => {
+    const res = await fetch('/users/isauthorised')
+    const data = await res.json()
+    console.log(data)
+    setAuthorised(data.authorised)
+  }
+  useEffect(() => {
+    const checkIfLoggedIn = async () => {
+      const res = await fetch('/users/isauthorised')
+      const data = await res.json()
+      console.log(data)
+      setAuthorised(data.authorised)
+    }
+     // on each refresh, checks if user is authorised, and conditional logic is executed.
+    checkIfLoggedIn()
+  }, [])
 
   // Adds item to cart with the current counter quantity
   const addToCart = (fish, quantity) => {
@@ -98,16 +121,6 @@ const App = () => {
 
     setCart({ items: newCartItems, ...totals })
   }
-
-  useEffect(() => {
-    const checkIfLoggedIn = async () => {
-      const res = await fetch('/users/isauthorised')
-      const data = await res.json()
-      console.log(data.msg)
-      setAuthorised(data.authorised)
-    }
-    checkIfLoggedIn()
-  }, [])
 
   const handleNewFish = async (createdFish) => {
     // if (createdFish.imageURL === "") {
@@ -240,11 +253,11 @@ const App = () => {
           />
           <Route
             path='/signin'
-            element={<SignIn handleLogin={handleAuth} />}
+            element={<SignIn handleLogin={handleAuth} authorised={authorised}/>}
           />
           <Route
             path='/signup'
-            element={<SignUp handleRegister={handleAuth} />}
+            element={<SignUp handleRegister={handleAuth} authorised={authorised}/>}
           />
         </Routes>
         <Footer />
