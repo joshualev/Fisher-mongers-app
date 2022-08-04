@@ -125,7 +125,7 @@ export default function Navbar(props) {
                     sx={{ p:3 }}>
                     <Badge
                       badgeContent={props.cart.totalQuantity}
-                      color="error"
+                      color="info"
                       sx={{ mr: 2 }}>
                       <ShoppingCartIcon />
                     </Badge> View Cart

@@ -14,6 +14,12 @@ import ProtectedRoute from './components/Protected/Protected'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
+  shape: {
+    borderRadius: 2
+  },
+  typography: {
+    fontFamily: `"Proxima Nova", "Roboto", "sans serif"`
+  },
   palette: {
     primary: {
       main: "#086972"
@@ -216,6 +222,7 @@ const App = () => {
               fishList={fishList}
               handleDelete={handleDelete}
               authorised={authorised}
+              addToCart={addToCart}
             />}
           />
           <Route

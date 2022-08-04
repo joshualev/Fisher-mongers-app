@@ -14,27 +14,29 @@ const CartItem = ({ fish, removeFromCart }) => {
     return (
         <div>
             <CardMedia
-                    component="img"
-                    sx={{ borderRadius:2, width: 180, height: 120, backgroundSize: 'cover',
+                component="img"
+                sx={{
+                    borderRadius: 2, width: 180, height: 120, backgroundSize: 'cover',
                     backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'center'}}
-                    image={ fish.imageURL }
-                    alt="alt"
-                />
-                <CardContent sx={{mt:-1}}>
-                    <Typography component="h2" variant="h5">
-                        { fish.species }
+                    backgroundPosition: 'center'
+                }}
+                image={fish.imageURL}
+                alt="alt"
+            />
+            <CardContent sx={{ mt: -1 }}>
+                <Typography component="h2" variant="h5">
+                    {fish.species}
                     <Typography variant="subtitle1" color="text.secondary">
                         ${(fish.price * fish.cartQuantity).toFixed(2)}
                     </Typography>
-                    </Typography>
-                    <Typography variant="subtitle1" color="text.secondary">
-                        In cart: {fish.cartQuantity}
-                    </Typography>
-                    <div>
-                        <Button onClick={handleClick} name="remove" sx={{ borderRadius:2, mt: 1, width: 180 }} variant="outlined" color="error" >REMOVE</Button>
-                    </div>
-                </CardContent>
+                </Typography>
+                <Typography variant="subtitle1" color="text.secondary">
+                    In cart: {fish.cartQuantity}
+                </Typography>
+                <div>
+                    <Button onClick={handleClick} name="remove" sx={{ borderRadius: 2, mt: 1, width: 180 }} variant="outlined" color="error" >REMOVE</Button>
+                </div>
+            </CardContent>
         </div>
     )
 }
@@ -54,11 +56,14 @@ const Cart = ({ cart, removeFromCart }) => {
     })
     return (
         <>
-            <Container align="center" sx={{mt:3}}>
-                    <Card sx={{display:'flex', justifyContent:'space-evenly', pb:3, flexDirection:'column', width: 300, borderRadius:2}}>
-                        <h3>{emptyCart}</h3>
-                        {cartList}
-                    </Card>
+            <Container align="center" sx={{ mt: 3 }}>
+                <Typography component="h1" variant="h4">
+                    Cart
+                </Typography>
+                <Card sx={{ display: 'flex', justifyContent: 'space-evenly', pb: 3, flexDirection: 'column', width: 300, borderRadius: 2 }}>
+                    <h3>{emptyCart}</h3>
+                    {cartList}
+                </Card>
                 <Grid sx={{ m: 2 }} >
                     <Typography sx={{ mb: 2 }}>
                         Total: ${cart.subTotal.toFixed(2)}
