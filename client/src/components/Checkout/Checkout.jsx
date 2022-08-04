@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from "react"
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
@@ -14,22 +15,23 @@ import Review from './Review';
 
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
-function getStepContent(step: number) {
+function getStepContent(step: number, cart) {
   switch (step) {
     case 0:
       return <AddressForm />;
     case 1:
       return <PaymentForm />;
     case 2:
-      return <Review />;
+      return <Review cart={cart}/>;
     default:
       throw new Error('Unknown step');
   }
 }
 
 
-export default function Checkout() {
-  const [activeStep, setActiveStep] = React.useState(0);
+export default function Checkout({cart}) {
+  const [activeStep, setActiveStep] = useState(0);
+  const [checkoutState, setCheckoutState] = useState({})
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -66,7 +68,7 @@ export default function Checkout() {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                {getStepContent(activeStep)}
+                {getStepContent(activeStep, cart)}
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>

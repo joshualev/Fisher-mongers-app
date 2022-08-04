@@ -239,6 +239,7 @@ const App = () => {
             path='/checkout'
             element={fishList && <Checkout
               fishList={fishList}
+              cart={cart}
             />}
           />
           <Route
