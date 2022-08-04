@@ -20,7 +20,8 @@ const Create = (props) => {
   } = useForm()
 
   // console.log(errors);
-  console.log(watch());
+  // console.log(watch("file"))
+  // const {imageName} = watch("file")
 
   const errorMessage = createTheme({
     typography: {
@@ -29,10 +30,10 @@ const Create = (props) => {
     }
   })
 
-  const handleImage = async (img) => {
-    console.log(img)
+  const handleImage = async (newItemData) => {
+    console.log(newItemData)
     const formData = new FormData()
-    formData.append("image", img.file[0])
+    formData.append("image", newItemData.file[0])
     console.log(formData);
     
     const res = await fetch("http://localhost:4000/upload", {
@@ -54,7 +55,7 @@ const Create = (props) => {
           sx={{ mt: 2, pb: 10 }}>
           <Typography component="h1" variant="h3" sx={{ mb: 2 }}>Add A New Item</Typography>
 
-          <form onSubmit={handleSubmit((data) => { handleImage(data) })}>
+          <form onSubmit={handleSubmit((data) => { props.handleNewFish(data) })}>
             <TextField
               type="text"
               label="Species"
@@ -132,10 +133,11 @@ const Create = (props) => {
                 {...register("file")}
               />
             </Button>
-            {/* <Box sx={{ color: "green", width: 300 }} >
-              {image.value && <Typography align="left" sx={{ fontSize: 12 }} >Image {image.value} uploaded
-              </Typography>}
-            </Box> */}
+            {/* <Box sx={{ color: "green", width: 300 }} > */}
+              {/* <Typography>{imageName}</Typography> */}
+              {/* {image.value && <Typography align="left" sx={{ fontSize: 12 }} >Image {image.value} uploaded
+              </Typography>} */}
+            {/* </Box> */}
             <br />
 
             <Button

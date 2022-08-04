@@ -117,12 +117,14 @@ const App = () => {
     // formData.append("image", createdFish.file[0])
     // console.log(formData)
     // console.log("New fish added:", createdFish)
+    const createdWithImage = {...createdFish, "image" : createdFish.file[0]}
+    console.log(createdWithImage)
     const res = await fetch("http://localhost:4000/fish", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(createdFish)
+      body: JSON.stringify(createdWithImage)
     })
     // console.log(res.ok)  
     if (res.ok) {
