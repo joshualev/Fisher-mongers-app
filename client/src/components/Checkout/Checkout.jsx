@@ -35,6 +35,7 @@ export default function Checkout({cart}) {
   const [paymentState, setPaymentState] = useState({})
 
   const handleAddressSubmitStep = (fields) => {
+    console.log(fields)
     setAddressState(fields)
   }
 
@@ -43,11 +44,11 @@ export default function Checkout({cart}) {
   }
 
   const handleNext = () => {
-    setActiveStep(activeStep + 1);
+    setActiveStep(activeStep + 1)
   };
 
   const handleBack = () => {
-    setActiveStep(activeStep - 1);
+    setActiveStep(activeStep - 1)
   };
 
   return (
