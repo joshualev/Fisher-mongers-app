@@ -41,7 +41,9 @@ const Show = ({ fishList, handleDelete, authorised, addToCart }) => {
   }
 
   const handleAddToCart = () => {
+    if (counter > 0 ){ 
     addToCart(fish, counter)
+    }
   }
 
   const handleUpdate = () => {
