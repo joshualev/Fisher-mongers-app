@@ -1,6 +1,6 @@
-import { usState } from "react"
+import { useState } from "react"
 import { useParams } from "react-router-dom"
-import { useForm } from "react-hook-form"
+import { useForm, Controller } from "react-hook-form"
 import { Container, Typography, CssBaseline, Button, TextField, InputAdornment, Box, createTheme } from "@mui/material"
 
 const Edit = ({ fishList, handleEdit }) => {
@@ -11,6 +11,7 @@ const Edit = ({ fishList, handleEdit }) => {
     register,
     handleSubmit,
     watch,
+    control,
     formState: { errors }
   } = useForm()
 
@@ -23,6 +24,13 @@ const Edit = ({ fishList, handleEdit }) => {
       fontSize: 12,
     }
   })
+
+  const [ imgName, setImgName ] = useState(false)
+
+  const onImgUpload = () => {
+    setImgName(true)
+    console.log(imgName)
+  }
 
   return (
     <>
@@ -62,15 +70,6 @@ const Edit = ({ fishList, handleEdit }) => {
             </Box>
 
             <TextField
-              type="text"
-              {...register("imageURL")}
-              label="Image"
-              sx={{ width: 300, mt: 2 }}
-              defaultValue={fish.imageURL}
-            />
-            <br />
-
-            <TextField
               type="number"
               {...register("price", { required: "Price is required" })}
               label="Price"
@@ -108,6 +107,34 @@ const Edit = ({ fishList, handleEdit }) => {
               <Typography align="left" sx={{ fontSize: 12 }} >{errors.caughtBy?.message}
               </Typography>
             </Box>
+
+            <Controller
+              render={({
+                field: { onChange, value }
+              }) => (
+                <Button variant="outlined" component="label" sx={{ mt: 2, width: 300 }} onChange={onImgUpload} >
+                  Upload Image
+                  <input
+                    accept="image/*"
+                    hidden
+                    multiple
+                    type="file"
+                    name="image"
+                    id="image"
+                    {...register("file")}
+                  />
+                </Button>
+
+              )}
+              name="image"
+              control={control}
+            />
+
+            { imgName && <Box sx={{ color: "grey", width: 300 }} >
+              <Typography align="left" sx={{ fontSize: 12 }} >Image Uploaded ✅
+              </Typography>
+            </Box>}
+            { !imgName && <br/> }   
 
             <Button
               type="submit"

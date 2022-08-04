@@ -123,21 +123,16 @@ const App = () => {
   }
 
   const handleNewFish = async (createdFish) => {
-    // if (createdFish.imageURL === "") {
-    //   createdFish.imageURL = undefined
-    // }
-    // const formData = new FormData()
-    // formData.append("image", createdFish.file[0])
-    // console.log(formData)
-    // console.log("New fish added:", createdFish)
-    const createdWithImage = {...createdFish, "image" : createdFish.file[0]}
-    console.log(createdWithImage)
+    // console.log(createdFish)
+    const formData = new FormData()
+    for (let key in createdFish) {
+      formData.append(key, createdFish[key])
+    }
+    formData.append("image", createdFish.file[0])
+    formData.delete("file")
     const res = await fetch("http://localhost:4000/fish", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(createdWithImage)
+      body: formData
     })
     // console.log(res.ok)  
     if (res.ok) {
@@ -155,12 +150,15 @@ const App = () => {
 
   const handleEdit = async (editedFish) => {
     // console.log("Edited fish: ", editedFish)
+    const formData = new FormData()
+    for (let key in editedFish) {
+      formData.append(key, editedFish[key])
+    }
+    formData.append("image", editedFish.file[0])
+    formData.delete("file")
     const res = await fetch(`http://localhost:4000/fish/${editedFish._id}`, {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(editedFish)
+      body: formData
     })
     // console.log(res.ok)
     if (res.ok) {

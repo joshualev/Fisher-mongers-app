@@ -1,27 +1,19 @@
 import { useState } from "react"
-import { useForm } from "react-hook-form"
+import { useForm, Controller } from "react-hook-form"
 import { Container, Typography, CssBaseline, Button, TextField, InputAdornment, Box, createTheme } from "@mui/material"
 
-// const initialState = {
-//   species: "",
-//   description: "",
-//   imageURL: "",
-//   price: "",
-//   stock: "",
-//   caughtBy: ""
-// }
-
 const Create = (props) => {
+
   const {
     register,
     handleSubmit,
     watch,
-    formState: { errors }
+    control,
+    formState: { errors },
   } = useForm()
 
   // console.log(errors);
-  // console.log(watch("file"))
-  // const {imageName} = watch("file")
+  // console.log(watch())
 
   const errorMessage = createTheme({
     typography: {
@@ -30,20 +22,14 @@ const Create = (props) => {
     }
   })
 
-  const handleImage = async (newItemData) => {
-    console.log(newItemData)
-    const formData = new FormData()
-    formData.append("image", newItemData.file[0])
-    console.log(formData);
-    
-    const res = await fetch("http://localhost:4000/upload", {
-      method: "POST",
-      body: formData
-    })
-    const data = await res.json()
-    console.log(data)
-  }
+  const [ imgName, setImgName ] = useState(false)
 
+  const onImgUpload = () => {
+    // let file = watch("file")
+    // setImgName(file[0].name)
+    setImgName(true)
+    console.log(imgName)
+  }
 
   return (
     <>
@@ -76,14 +62,6 @@ const Create = (props) => {
               <Typography align="left" sx={{ fontSize: 12 }} >{errors.description?.message}
               </Typography>
             </Box>
-
-            {/* <TextField
-              type="file"
-              {...register("imageURL")}
-              label="Image"
-              sx={{ width: 300, mt: 2 }}
-            />
-            <br /> */}
 
             <TextField
               type="number"
@@ -121,25 +99,33 @@ const Create = (props) => {
               </Typography>
             </Box>
 
-            <Button variant="outlined" component="label"sx={{ mt: 2, width: 300 }} >
-              Upload Image
-              <input  
-                accept="image/*" 
-                hidden
-                multiple 
-                type="file" 
-                name="image" 
-                id="image"
-                {...register("file")}
-              />
-            </Button>
-            {/* <Box sx={{ color: "green", width: 300 }} > */}
-              {/* <Typography>{imageName}</Typography> */}
-              {/* {image.value && <Typography align="left" sx={{ fontSize: 12 }} >Image {image.value} uploaded
-              </Typography>} */}
-            {/* </Box> */}
-            <br />
+            <Controller
+              render={({
+                field: { onChange, value }
+              }) => (
+                <Button variant="outlined" component="label" sx={{ mt: 2, width: 300 }} onChange={onImgUpload} >
+                  Upload Image
+                  <input
+                    accept="image/*"
+                    hidden
+                    multiple
+                    type="file"
+                    name="image"
+                    id="image"
+                    {...register("file")}
+                  />
+                </Button>
 
+              )}
+              name="image"
+              control={control}
+            />
+
+            { imgName && <Box sx={{ color: "grey", width: 300 }} >
+              <Typography align="left" sx={{ fontSize: 12 }} >Image Uploaded ✅
+              </Typography>
+            </Box>}
+            { !imgName && <br/> }   
             <Button
               type="submit"
               variant="contained"
