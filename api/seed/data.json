@@ -8,6 +8,14 @@
     "caughtBy": "Barry"
   },
   {
+    "species": "Scallops",
+    "description": "Straight from the Bass Strait. They are slightly sweet and very buttery.",
+    "imageURL": "https://res.cloudinary.com/dpk0o7ztt/image/upload/v1659611477/scallops_i99n3x.jpg",
+    "price": 35,
+    "stock": 25,
+    "caughtBy": "Samantha"
+  },
+  {
     "species": "Barramundi",
     "description": "Also known as 'Asian Sea Bass', lightly flavoured and versatile for different cooking styles.",
     "imageURL": "https://res.cloudinary.com/dpk0o7ztt/image/upload/v1659393087/Barramundi_fillet_fkfy0j.webp",
@@ -16,11 +24,19 @@
     "caughtBy": "Pedro"
   },
   {
-    "species": "Salmon",
+    "species": "Atlantic Salmon",
     "description": "Rich and full of healthy fats, great for grilling or pan-frying.",
     "imageURL": "https://res.cloudinary.com/dpk0o7ztt/image/upload/v1659393091/ca-creative-kC9KUtSiflw-unsplash_qrgvvo.jpg",
     "price": 21,
     "stock": 10,
+    "caughtBy": "Farmed in Tasmania"
+  },
+  {
+    "species": "Oysters",
+    "description": "The freshest Tassie oysters from the coldest waters. Half a dozen is never enough",
+    "imageURL": "https://res.cloudinary.com/dpk0o7ztt/image/upload/v1659611818/Screenshot_2022-08-04_at_21.16.43_pqhuxc.png",
+    "price": 5,
+    "stock": 144,
     "caughtBy": "Barry"
   },
   {
@@ -38,6 +54,22 @@
     "price": 15,
     "stock": 15,
     "caughtBy": "Mary"
+  },
+  {
+    "species": "Prawns",
+    "description": "Fresh raw prawns from Lakes Entrance.",
+    "imageURL": "https://res.cloudinary.com/dpk0o7ztt/image/upload/v1659612254/Screenshot_2022-08-04_at_21.23.52_odadhe.png",
+    "price": 38,
+    "stock": 20,
+    "caughtBy": "Patti"
+  },
+  {
+    "species": "Swimmer Crab",
+    "description": "Blue swimmer crabs wild caught and fresh. Steam and slather with butter",
+    "imageURL": "https://res.cloudinary.com/dpk0o7ztt/image/upload/v1659612712/Green-Blue-Crabs_kowzre.jpg",
+    "price": 29,
+    "stock": 15,
+    "caughtBy": "Barry"
   },
   {
     "species": "Yellowfin Tuna",
@@ -64,11 +96,11 @@
     "caughtBy": "Yolanda"
   },
   {
-    "species": "Smoked Salmon",
-    "description": "Smoked with Mesquite wood chips, perfect in a bagel or on scrambled eggs.",
-    "imageURL": "https://res.cloudinary.com/dpk0o7ztt/image/upload/v1659393108/smoked_salmon_dnmkqm.webp",
-    "price": 45,
-    "stock": 15,
-    "caughtBy": "Mary"
+    "species": "Caviar",
+    "description": "Salmon caviar farmed in the Yarra Valley.",
+    "imageURL": "https://res.cloudinary.com/dpk0o7ztt/image/upload/v1659612474/Screenshot_2022-08-04_at_21.27.45_eh2ac4.png",
+    "price": 35,
+    "stock": 10,
+    "caughtBy": "Yarra Valley Caviar"
   }
 ]

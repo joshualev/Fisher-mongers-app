@@ -38,27 +38,6 @@ const SignIn = (props) => {
     props.handleLogin(data.authorised)
   }
 
-
-
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   const newUser = {
-  //     username: data.get("username"),
-  //     password: data.get("password")
-  //   }
-  //   const res = await fetch("/users/login", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(newUser)
-  //   })
-  //   const newData = await res.json()
-  //   console.log(newData.msg);
-  //   console.log(newData)
-  //   props.handleLogin(newData.authorised)
-    
-  // };
-
   return (
     <Container sx={{mb: 20}} component="main" maxWidth="xs">
       <CssBaseline />
