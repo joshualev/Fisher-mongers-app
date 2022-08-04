@@ -70,7 +70,7 @@ export default function Navbar(props) {
                 >
                   <Badge
                     badgeContent={props.cart.totalQuantity}
-                    color="error"
+                    color="info"
                     >
                   <ShoppingCartIcon />
                   </Badge>
