@@ -104,7 +104,7 @@ const Footer = () => {
     },
   ];
   return (
-    <Container sx={{mt:15, backgroundColor: "#e6e6e6" }}>
+    <Container sx={{mt:15, backgroundColor: "#f5f5f5" }}>
       <Grid container spacing={4} justifyContent="space-evenly">
         {footers.map((footer) => (
           <Grid item xs={6} sm={3} key={footer.title}>
