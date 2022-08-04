@@ -83,7 +83,7 @@ Checkout Page
 
 ### Major Hurdles/Challenges
 
-#### Implmenting and Shopping Cart and Checkout Features
+#### Implementing Shopping Cart and Checkout Features
 
 [Dan, feel free to rant about how difficult it was to do this here.]
 
