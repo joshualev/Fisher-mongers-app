@@ -29,7 +29,9 @@ const Product = ({ fish, addToCart }) => {
   }
 
   const handleAddToCart = () => {
+    if (counter > 0 ){ 
     addToCart(fish, counter)
+  }
   }
 
   return (
