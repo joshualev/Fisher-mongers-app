@@ -34,9 +34,11 @@ export default function Navbar(props) {
           {props.authorised 
           ?
           <>
+          <NavLink to="/" style={{ textDecoration: 'none' }}>
           <IconButton size="large" color="primary" variant="text" sx={{m:1}}>
               <HomeIcon />
           </IconButton>
+          </NavLink>
             <NavLink to="/new" style={{ textDecoration: 'none' }}>
               <IconButton
                 size="large" color="primary" variant="text" sx={{m:1}} >
@@ -45,9 +47,13 @@ export default function Navbar(props) {
             </NavLink>
           </>
           : 
+          <>
+          <NavLink to="/" style={{ textDecoration: 'none' }}>
           <Button size="large" color="primary" variant="outlined" sx={{m:1}}>
               <HomeIcon sx={{pr:1}} /> Home
           </Button>
+          </NavLink>
+          </>
           }
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none', flexGrow:1 }}}>

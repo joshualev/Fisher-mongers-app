@@ -8,7 +8,6 @@ const cors = require('cors')
 const usersController = require("./controllers/Users")
 const fishController = require('./controllers/Fish')
 
-
 const app = express()
 const PORT = process.env.PORT
 const dbURL = process.env.MONGODB_URL

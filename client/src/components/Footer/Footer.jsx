@@ -107,7 +107,7 @@ const Footer = () => {
     <Container sx={{mt:15, backgroundColor: "#f5f5f5" }}>
       <Grid container spacing={4} justifyContent="space-evenly">
         {footers.map((footer) => (
-          <Grid item xs={6} sm={3} key={footer.title}>
+          <Grid item xs={12} sm={6} md={3} key={footer.title}>
             <Typography variant="h6" color="text.primary" gutterBottom>
               {footer.title}
             </Typography>
@@ -121,7 +121,7 @@ const Footer = () => {
           </Grid>
         ))}
       </Grid>
-      <Typography variant="body2" color="text.secondary" align="center">
+      <Typography variant="body2" color="text.secondary" align="center" sx={{mt:1}}>
         We acknowledge the Traditional Owners of the land and seas and pay our respect to Elders past, present and emerging.
       </Typography>
       <Copyright sx={{ mt: 5 }} />
