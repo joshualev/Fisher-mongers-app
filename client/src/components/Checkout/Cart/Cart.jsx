@@ -66,6 +66,9 @@ const Cart = ({ cart, removeFromCart }) => {
                     <h3>{emptyCart}</h3>
                     {cartList}
                 </Card>
+
+            {cart.items.length !== 0 
+            ?
                 <Grid sx={{ m: 2 }} >
                     <Typography sx={{ mb: 2 }}>
                         Total: ${cart.subTotal.toFixed(2)}
@@ -73,7 +76,10 @@ const Cart = ({ cart, removeFromCart }) => {
                     <Link to='/checkout' style={{ textDecoration: 'none' }}>
                         <Button variant="contained" size="large">Proceed to Payment</Button>
                     </Link>
+                     
                 </Grid>
+            : <Container sx={{mb:2}}></Container>
+            }
                 <Link to='/' style={{ textDecoration: 'none' }}>
                     <Button variant="outlined" size="large" startIcon={<PhishingIcon/>} >Continue shopping</Button>
                 </Link>

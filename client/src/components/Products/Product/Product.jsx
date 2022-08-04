@@ -66,7 +66,7 @@ const Product = ({ fish, addToCart }) => {
             </Button>
             <Typography
               variant="p"
-              sx={{ p: 2.3 }}>
+              sx={{ p: 2 }}>
               {counter}
             </Typography>
             <Button
