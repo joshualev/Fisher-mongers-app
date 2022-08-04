@@ -33,6 +33,10 @@ Once we had an idea of what we were displaying we mocked up some wireframes for 
 
 ![Wireframes](./readme-images/Hooked%20-%20Wireframes.jpg)
 
+Some market research was conducted to analyse other, similar sites and the components that we thought were noteworthy:
+
+![Market-Research](./readme-images/Hooked%20-%20Market%20Research.jpg)
+
 ### Implementation
 
 The app was built using [MUI components](https://mui.com/components/) from the beginning, allowing a finished-looking state to be achieved early on. This allowed more time to build out the front (React) and back end (Express & MongoDB).
