@@ -52,7 +52,7 @@ const Show = ({ fishList, handleDelete, authorised, addToCart }) => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <Container maxWidth="sm" component="main" sx={{ textAlign: "left", width: '100%', align: 'center', justifyContent: 'center', pt: 10, pb: 10 }}>
+      <Container maxWidth="sm" component="main" sx={{ textAlign: "left", width: '100%', align: 'center', justifyContent: 'center', pt: 5, pb: 5 }}>
         <Card >
           <CardHeader
             title={fish.species}
