@@ -7,7 +7,6 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
-import CardActionArea from '@mui/material/CardActionArea';
 
 const CartItem = ({ fish, removeFromCart }) => {
     const handleClick = () => {
@@ -16,6 +15,7 @@ const CartItem = ({ fish, removeFromCart }) => {
     return (
         <div>
             <Card sx={{ display: 'flex' }}>
+                <Grid container>
                 <CardContent >
                     <Typography component="h2" variant="h5">
                         { fish.species }
@@ -30,13 +30,16 @@ const CartItem = ({ fish, removeFromCart }) => {
                         <Button onClick={handleClick} name="remove" sx={{ mt: 1, width: '100%' }} variant="outlined" color="error" >REMOVE</Button>
                     </div>
                 </CardContent>
+                </Grid>
+                <Grid item >
                 <CardMedia
                     component="img"
-                    sx={{ width: 160, display: 'block', p: 1 }}
+                    sx={{ width: 160, height: '100%',display: 'block', p: 1 }}
                     image={ fish.imageURL }
                     alt="alt"
                 />
-            </Card>
+                </Grid>
+            </Card> 
         </div>
     )
 }
@@ -61,11 +64,11 @@ const Cart = ({ cart, removeFromCart }) => {
     return (
         <>
             <Container align="center" sx={{ mt: 3 }}>
-                <Grid sx={{ width: '320px' }}>
-                    <CardActionArea component="a" href="#">
+                <Grid sx={{ width: '320px'}}>
+                    <Card>
                         <h3>{emptyCart}</h3>
                         {cartList}
-                    </CardActionArea>
+                    </Card>
                 </Grid>
 
                 <Grid sx={{ m: 2 }} >
