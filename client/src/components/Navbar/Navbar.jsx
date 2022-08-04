@@ -52,10 +52,7 @@ export default function Navbar(props) {
                 aria-label="account of current user"
                 variant="text"
                 color="primary"
-<<<<<<< HEAD
                 onClick={handleClick}
-=======
->>>>>>> 681a2cd40c3c5bdb5761f61f6598564bd0a9a463
               >
                 <AccountCircle sx={{ mr: 2 }} /> Sign out
               </Button>

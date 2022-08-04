@@ -22,6 +22,9 @@ const SignIn = (props) => {
     })
   }
 
+  const flashMessage = {
+    
+  }
   const handleSubmit = async (event) => {
     event.preventDefault()
     const res = await fetch('/users/login', {
