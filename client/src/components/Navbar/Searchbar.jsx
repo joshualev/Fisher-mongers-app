@@ -66,7 +66,7 @@ const Searchbar = ({ fishList }) => {
 
   return (
     <>
-      <Search>
+      <Search sx={{border: 1, borderColor: "#f5f5f5", borderRadius: 2, mr: 0}}>
         <SearchIconWrapper>
           <SearchIcon />
         </SearchIconWrapper>
@@ -74,6 +74,7 @@ const Searchbar = ({ fishList }) => {
           placeholder="Search…"
           inputProps={{ 'aria-label': 'search' }}
           onChange={handleFilter}
+
         />
       </Search>
       {filteredData.length !== 0 && (
