@@ -112,7 +112,7 @@ export default function Navbar(props) {
             </NavLink> 
               {props.authorised && <NavLink to="/new" style={{ textDecoration: 'none' }}>
                 <Button sx={{ p: 3 }} >
-                  New Item
+                  Add Item
                 </Button>
             </NavLink>}
             <Box sx={{ flexGrow: 1 }} >
