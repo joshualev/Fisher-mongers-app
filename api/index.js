@@ -5,8 +5,10 @@ const session = require("express-session")
 const mongoDBSession = require("connect-mongodb-session")
 const cors = require('cors')
 
+const uploadController = require('./controllers/uploads')
 const usersController = require("./controllers/Users")
 const fishController = require('./controllers/Fish')
+
 
 const app = express()
 const PORT = process.env.PORT
@@ -47,9 +49,10 @@ app.use(cors({
 
 app.use('/users', usersController)
 app.use('/fish', fishController)
+app.use('/upload', uploadController)
 
 mongoose.connect(dbURL, () => {
-    console.log('connected to fish db')
+    console.log('🐟', 'connected to fish db', '🐠')
 })
 app.listen(PORT, () => {
     console.log('listening on port: ', PORT)

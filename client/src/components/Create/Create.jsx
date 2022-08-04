@@ -1,26 +1,19 @@
 import { useState } from "react"
-import { useForm } from "react-hook-form"
+import { useForm, Controller } from "react-hook-form"
 import { Container, Typography, CssBaseline, Button, TextField, InputAdornment, Box, createTheme } from "@mui/material"
 
-// const initialState = {
-//   species: "",
-//   description: "",
-//   imageURL: "",
-//   price: "",
-//   stock: "",
-//   caughtBy: ""
-// }
-
 const Create = (props) => {
+
   const {
     register,
     handleSubmit,
     watch,
-    formState: { errors }
+    control,
+    formState: { errors },
   } = useForm()
 
   // console.log(errors);
-  // console.log(watch());
+  // console.log(watch())
 
   const errorMessage = createTheme({
     typography: {
@@ -29,6 +22,15 @@ const Create = (props) => {
     }
   })
 
+  const [ imgName, setImgName ] = useState(false)
+
+  const onImgUpload = () => {
+    // let file = watch("file")
+    // setImgName(file[0].name)
+    setImgName(true)
+    console.log(imgName)
+  }
+
   return (
     <>
       <CssBaseline />
@@ -36,12 +38,10 @@ const Create = (props) => {
         <Container
           maxWidth="med"
           align="center"
-          sx={{ mt: 2, pb:10}}>
+          sx={{ mt: 2, pb: 10 }}>
           <Typography component="h1" variant="h3" sx={{ mb: 2 }}>Add A New Item</Typography>
 
-          <form onSubmit={handleSubmit((data) => {
-            props.handleNewFish(data)
-          })}>
+          <form onSubmit={handleSubmit((data) => { props.handleNewFish(data) })}>
             <TextField
               type="text"
               label="Species"
@@ -62,14 +62,6 @@ const Create = (props) => {
               <Typography align="left" sx={{ fontSize: 12 }} >{errors.description?.message}
               </Typography>
             </Box>
-
-            <TextField
-              type="text"
-              {...register("imageURL")}
-              label="Image"
-              sx={{ width: 300, mt: 2 }}
-            />
-            <br />
 
             <TextField
               type="number"
@@ -107,6 +99,33 @@ const Create = (props) => {
               </Typography>
             </Box>
 
+            <Controller
+              render={({
+                field: { onChange, value }
+              }) => (
+                <Button variant="outlined" component="label" sx={{ mt: 2, width: 300 }} onChange={onImgUpload} >
+                  Upload Image
+                  <input
+                    accept="image/*"
+                    hidden
+                    multiple
+                    type="file"
+                    name="image"
+                    id="image"
+                    {...register("file")}
+                  />
+                </Button>
+
+              )}
+              name="image"
+              control={control}
+            />
+
+            { imgName && <Box sx={{ color: "grey", width: 300 }} >
+              <Typography align="left" sx={{ fontSize: 12 }} >Image Uploaded ✅
+              </Typography>
+            </Box>}
+            { !imgName && <br/> }   
             <Button
               type="submit"
               variant="contained"

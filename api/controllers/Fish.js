@@ -1,6 +1,7 @@
 const express=require('express')
 
 const fishRouter = express.Router()
+const upload = require('../middlewares/upload')
 const Fish = require('../models/Fish')
 
 
@@ -22,8 +23,12 @@ fishRouter.get("/:fishID", async (req, res) => {
 })
 
 // New Route
-fishRouter.post("/", async (req, res) => {
+fishRouter.post("/", upload.single("image"), async (req, res) => {
     try {
+        if (req.file) {
+            req.body.imageURL = req.file.path
+        }
+        console.log(req.file);
         const newFish = await Fish.create(req.body)
         console.log(newFish)
         res.status(200).json(newFish)
@@ -41,10 +46,19 @@ fishRouter.delete("/:fishID", async (req, res) => {
 })
 
 // Put (edit) Route
-fishRouter.put("/:fishID", async (req, res) => {
-    const updateFish = await Fish.findByIdAndUpdate(req.params.fishID, req.body, {new: true} ).exec()
-    console.log("Updated fish :", updateFish)
-    res.status(200).json(updateFish)
+fishRouter.put("/:fishID", upload.single("image"), async (req, res) => {
+    try {
+        if (req.file) {
+            req.body.imageURL = req.file.path
+        }
+        console.log(req.file)
+        const updateFish = await Fish.findByIdAndUpdate(req.params.fishID, req.body, {new: true} ).exec()
+        console.log("Updated fish :", updateFish)
+        res.status(200).json(updateFish)
+    } catch (error) {
+        res.status(500).json({ errorMessage: error.message })
+        console.log("could not update fish: ", error.message )
+    }
 })
 
 module.exports = fishRouter
