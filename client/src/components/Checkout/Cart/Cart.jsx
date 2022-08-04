@@ -7,6 +7,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
+import PhishingIcon from '@mui/icons-material/Phishing';
+
 const CartItem = ({ fish, removeFromCart }) => {
     const handleClick = () => {
         removeFromCart(fish)
@@ -72,6 +74,9 @@ const Cart = ({ cart, removeFromCart }) => {
                         <Button variant="contained" size="large">Proceed to Payment</Button>
                     </Link>
                 </Grid>
+                <Link to='/' style={{ textDecoration: 'none' }}>
+                    <Button variant="outlined" size="large" startIcon={<PhishingIcon/>} >Continue shopping</Button>
+                </Link>
             </Container>
         </>
     )

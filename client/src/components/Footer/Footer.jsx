@@ -3,6 +3,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Container from '@mui/material/Container';
+import PhishingIcon from '@mui/icons-material/Phishing';
 
 const Footer = () => {
 
@@ -103,7 +104,7 @@ const Footer = () => {
     },
   ];
   return (
-    <Container sx={{mt:5}}>
+    <Container sx={{mt:15, backgroundColor: "#e6e6e6" }}>
       <Grid container spacing={4} justifyContent="space-evenly">
         {footers.map((footer) => (
           <Grid item xs={6} sm={3} key={footer.title}>
@@ -120,6 +121,9 @@ const Footer = () => {
           </Grid>
         ))}
       </Grid>
+      <Typography variant="body2" color="text.secondary" align="center">
+        We acknowledge the Traditional Owners of the land and seas and pay our respect to Elders past, present and emerging.
+      </Typography>
       <Copyright sx={{ mt: 5 }} />
     </Container>
   )

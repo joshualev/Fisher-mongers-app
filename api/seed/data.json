@@ -64,14 +64,6 @@
     "caughtBy": "Patti"
   },
   {
-    "species": "Swimmer Crab",
-    "description": "Blue swimmer crabs wild caught and fresh. Steam and slather with butter",
-    "imageURL": "https://res.cloudinary.com/dpk0o7ztt/image/upload/v1659612712/Green-Blue-Crabs_kowzre.jpg",
-    "price": 29,
-    "stock": 15,
-    "caughtBy": "Barry"
-  },
-  {
     "species": "Yellowfin Tuna",
     "description": "Rich read meat that is great grilled or fried in thick steaks.",
     "imageURL": "https://res.cloudinary.com/dpk0o7ztt/image/upload/v1659393120/tuna_steak_ckatsp.jpg",
@@ -94,6 +86,14 @@
     "price": 30,
     "stock": 6,
     "caughtBy": "Yolanda"
+  },
+  {
+    "species": "Swimmer Crab",
+    "description": "Blue swimmer crabs wild caught and fresh. Steam and slather with butter",
+    "imageURL": "https://res.cloudinary.com/dpk0o7ztt/image/upload/v1659612712/Green-Blue-Crabs_kowzre.jpg",
+    "price": 29,
+    "stock": 15,
+    "caughtBy": "Barry"
   },
   {
     "species": "Caviar",

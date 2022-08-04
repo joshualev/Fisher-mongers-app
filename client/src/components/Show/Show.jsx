@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { useParams } from "react-router"
 import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
+import { Link } from 'react-router-dom'
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -14,6 +15,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import DeleteIcon from "@mui/icons-material/Delete"
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import PhishingIcon from '@mui/icons-material/Phishing';
 
 const Show = ({ fishList, handleDelete, authorised, addToCart }) => {
   const [counter, setCounter] = useState()
@@ -46,8 +49,8 @@ const Show = ({ fishList, handleDelete, authorised, addToCart }) => {
   }
 
   return (
-    <div>
-      <Container maxWidth="sm" component="main" sx={{ width: '100%', align: 'center', justifyContent: 'center', pt: 10, pb: 10 }}>
+    <div style={{ textAlign: "center" }}>
+      <Container maxWidth="sm" component="main" sx={{ textAlign: "left", width: '100%', align: 'center', justifyContent: 'center', pt: 10, pb: 10 }}>
         <Card >
           <CardHeader
             title={fish.species}
@@ -102,7 +105,7 @@ const Show = ({ fishList, handleDelete, authorised, addToCart }) => {
               </Typography>
               <Button onClick={handleClick} name="plus" variant="outlined" size="medium" color="primary">+</Button>
               <div>
-                <Button onClick={handleAddToCart} name="add" sx={{ mt: 1, width: '100%' }} variant="contained" color="primary" >Add to cart</Button>
+                <Button onClick={handleAddToCart} name="add" sx={{ mt: 1, width: '100%' }} variant="contained" color="primary" startIcon={<ShoppingCartIcon />} >Add to cart</Button>
               </div>
             </Card>
             {authorised && <Card sx={{ mb: 1, width: 169 }}>
@@ -116,6 +119,9 @@ const Show = ({ fishList, handleDelete, authorised, addToCart }) => {
           </CardActions>
         </Card>
       </Container>
+      <Link to='/' style={{ textDecoration: 'none' }}>
+        <Button variant="outlined" size="large" startIcon={<PhishingIcon/>} >Continue shopping</Button>
+      </Link>
     </div>
   )
 

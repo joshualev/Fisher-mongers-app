@@ -66,7 +66,6 @@ const App = () => {
     } else {
       console.log('incorrect username details')
     }
-    
   }
 
   const handleLogout = () => {
