@@ -89,16 +89,17 @@ Checkout Page
 
 #### Utilising React Packages
 
-The team decided to utilise the [React Hook Form](https://react-hook-form.com/) and MUI packages for our app to gain experience and develp our skills in this area. Using both these packages presented additional challenges in some areas in drafting sytax and logic that would be recnignised by each (as well as native React) to acheive the desired outcome.
+The team decided to utilise the [React Hook Form](https://react-hook-form.com/) and MUI packages for our app to gain experience and develop our skills in this area. Using both these packages presented additional challenges in some areas in drafting syntax and logic that would be recognised by each (as well as native React) to acheive the desired outcome.
 
-[Josh, anything you found particularly challenging? The features you implemented using MUI?]
+#### Working with MUI 
 
+We decided to work with MUI to gain experience in the technology. While MUI provided a quick and clean solution to scaffold a simple structure for our app, the challenges began presenting themselves once our design features became more focused.
 ---
 
 ### Future Update Options
 Potential Future updates for the app may include:
 - Implements user and admin profiles into the users model.
-- Additional product models (e.g. shellfish, panty items)
+- Additional product models (e.g. shellfish, pantry items)
 - Other ecommended products in the product details (show) view based on the product that is current being viewed.
 - Integrate a recepies API, such as [spoonacular](https://spoonacular.com/food-api) or [edamam](https://developer.edamam.com/edamam-recipe-api) to provide recipie ideas based on the product viewed/selected.
 - Maps integration to show the user where the fish being viewed was caught.
