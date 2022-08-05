@@ -124,7 +124,7 @@ const Footer = () => {
       <Typography variant="body2" color="text.secondary" align="center" sx={{mt:1}}>
         We acknowledge the Traditional Owners of the land and seas and pay our respect to Elders past, present and emerging.
       </Typography>
-      <Copyright sx={{ mt: 5 }} />
+      <Copyright sx={{ mt: 5, pb:2 }} />
     </Container>
   )
 }

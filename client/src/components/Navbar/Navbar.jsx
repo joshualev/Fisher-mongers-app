@@ -14,7 +14,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import AddIcon from '@mui/icons-material/Add';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LoginIcon from '@mui/icons-material/Login';
-
+import Container from '@mui/material/Container'
 
 
 
@@ -162,31 +162,21 @@ export default function Navbar(props) {
                           </Button>
                 </Link>
                 }
-              </Box>
-              
-            </Box>
+              </Box>            
+            </Box>         
           </Toolbar>
         </AppBar>
       </Box>
+     
 
-      <AppBar
-        position="static"
-        color="inherit"
-        elevation={0}
-      >
-        <Toolbar sx={{ flexWrap: 'wrap' }}>
-        <Box
-            sx={{
-              flexGrow: 1,
-              justifyContent: 'start'
-            }}
-          />
-          <Searchbar sx={{
-            justifyContent: 'start',
-            flexGrow: 1
-          }} fishList={props.fishList} />
-        </Toolbar>
-      </AppBar>
+  {/* <AppBar className="AppBar" position="static" color="inherit" sx={{boxShadow:'none'}}>
+     */}
+      <Searchbar
+        fishList={props.fishList} 
+     />
+  
+ {/* </AppBar> */}
+
     </>
   );
 }

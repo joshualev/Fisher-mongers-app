@@ -7,6 +7,11 @@ import InputBase from '@mui/material/InputBase';
 import Container from '@mui/material/Container'
 import Button from '@mui/material/Button'
 
+import Grid from '@mui/material/Grid'
+import Card from '@mui/material/Card'
+
+
+
 const SearchIconWrapper = styled('div')(({ theme }) => ({
   padding: theme.spacing(0, 2),
   height: '100%',
@@ -53,7 +58,7 @@ const Searchbar = ({ fishList }) => {
   const handleFilter = (e) => {
     const searchWord = e.target.value
     const newFilter = fishList.filter((value) => {
-      return value.species.includes(searchWord)
+      return value.species.toLowerCase().includes(searchWord.toLowerCase())
     })
     if (searchWord.length !== 0) {
       setFilteredData(newFilter)
@@ -66,7 +71,8 @@ const Searchbar = ({ fishList }) => {
 
   return (
     <>
-      <Search sx={{border: 1, borderColor: "#f5f5f5", borderRadius: 2, mr: 0}}>
+    <Grid className="GridOne" sx={{ flexDirection:'row', justifyContent:'start', display:'flex'}}>
+      <Search sx={{border: 1, borderColor: "#f5f5f5", borderRadius: 2, mr: 0, mt:1.5}}>
         <SearchIconWrapper>
           <SearchIcon />
         </SearchIconWrapper>
@@ -77,8 +83,11 @@ const Searchbar = ({ fishList }) => {
 
         />
       </Search>
+      </Grid>
+     <Grid sx={{position:'absolute', ml:3}}>
+       {/* <Card sx={{boxShadow:'none'}}> */}
       {filteredData.length !== 0 && (
-        <Container >
+         <div>
           {filteredData.map((fish) => {
             return (
               <Link
@@ -89,9 +98,12 @@ const Searchbar = ({ fishList }) => {
               </Link>
             )
           })}
-        </Container>
+        </div>
       )}
+      {/* </Card> */}
+      </Grid>
     </>
+    
   )
 }
 
