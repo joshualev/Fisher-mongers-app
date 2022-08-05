@@ -88,7 +88,9 @@ Checkout Page
 
 #### Implementing Shopping Cart and Checkout Features
 
-Due to the short timeframe to develop the app (4 days) a a MUI checkout template was used for the checkout process. The design of the template used brought additional challenges in managing state and user input throughout the checkout process.
+Due to the short timeframe to develop the app (4 days) a a MUI checkout template was used for the checkout process. The design of the template used brought additional challenges in managing state and user input throughout the checkout process. For our presentation app we had to use a "save" button on each form page to save state, this is something we would like to remove when we have the time.
+
+The shopping cart state and manipulation was a challenge to build initially but ended up being hugely rewarding and allowed some insight into advanced JS and object manipulation that will no doubt be very useful.
 
 #### Utilising React Packages
 
@@ -108,3 +110,6 @@ Potential Future updates for the app may include:
 - Integrate a recepies API, such as [spoonacular](https://spoonacular.com/food-api) or [edamam](https://developer.edamam.com/edamam-recipe-api) to provide recipie ideas based on the product viewed/selected.
 - Maps integration to show the user where the fish being viewed was caught.
 - Fishmonger profile pages to help promote small local businesses and the sustainable fishing approach of the platform.
+- Relational date for the above, allowing the Fishmonger adding the item to be featured in the "Show" route, with added click-through to their profile.
+- Additional accessibility options such as different view styles or a toggle-able font such as [Dyslexie](https://www.dyslexiefont.com/)
+- Further integration of sustainable seafood tracking APIs, unfortunately there are not a huge amount of resources for this in Australia.
