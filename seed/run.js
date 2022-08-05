@@ -2,7 +2,7 @@ require('dotenv').config()
 
 const mongoose = require('mongoose')
 
-const Fish = require('../models/fish')
+const Fish = require('../models/Fish')
 const dummyFish = require('./data.json')
 
 const dbURL = process.env.MONGODB_URL

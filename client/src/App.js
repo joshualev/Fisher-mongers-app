@@ -47,7 +47,7 @@ const App = () => {
   const navigate = useNavigate()
 
   const getFish = async () => {
-    const url = 'http://localhost:4000/fish'
+    const url = '/fish'
     const res = await fetch(url)
     const data = await res.json()
     setFishList(data)
@@ -135,7 +135,7 @@ const App = () => {
     }
     formData.append("image", createdFish.file[0])
     formData.delete("file")
-    const res = await fetch("http://localhost:4000/fish", {
+    const res = await fetch("/fish", {
       method: "POST",
       body: formData
     })
@@ -161,7 +161,7 @@ const App = () => {
     }
     formData.append("image", editedFish.file[0])
     formData.delete("file")
-    const res = await fetch(`http://localhost:4000/fish/${editedFish._id}`, {
+    const res = await fetch(`/fish/${editedFish._id}`, {
       method: "PUT",
       body: formData
     })
@@ -184,7 +184,7 @@ const App = () => {
 
   const handleDelete = async (fishIDToDelete) => {
     // console.log("delete fish: ", fishIDToDelete)
-    const res = await fetch(`http://localhost:4000/fish/${fishIDToDelete}`, {
+    const res = await fetch(`/fish/${fishIDToDelete}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json"
