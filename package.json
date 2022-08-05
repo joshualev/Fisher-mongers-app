@@ -5,7 +5,8 @@
   "description": "Fish Mongers App",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && npm i && npm run build"
   },
   "author": "Dan, Evan, Josh",
   "license": "ISC",
