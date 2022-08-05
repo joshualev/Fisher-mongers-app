@@ -7,27 +7,10 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
-export default function AddressForm({handleAddressSubmitStep, addressState}) {
-    const [fields, setFields] = useState({
-      firstName: "",
-      lastName: "",
-      address1: "",
-      address2: "",
-      city: "",
-      state: "",
-      zip: "",
-      country: "",
-      saveAddress: false,
-    })
-    const handleChange = (event) => {
-      setFields({
-        ...fields,
-        [event.target.name]: event.target.value
-      })
-    }
+export default function AddressForm({handleFormChange, checkoutState}) {
 
-    const handleSubmit = () => {
-      handleAddressSubmitStep(fields)
+    const handleChange = (event) => {
+      handleFormChange(event)
     }
 
     return (
@@ -41,7 +24,7 @@ export default function AddressForm({handleAddressSubmitStep, addressState}) {
               required
               id="firstName"
               name="firstName"
-              value={addressState.firstName}
+              value={checkoutState.firstName}
               label="First name"
               fullWidth
               autoComplete="given-name"
@@ -54,7 +37,7 @@ export default function AddressForm({handleAddressSubmitStep, addressState}) {
               required
               id="lastName"
               name="lastName"
-              value={addressState.lastName}
+              value={checkoutState.lastName}
               label="Last name"
               fullWidth
               autoComplete="family-name"
@@ -67,7 +50,7 @@ export default function AddressForm({handleAddressSubmitStep, addressState}) {
               required
               id="address1"
               name="address1"
-              value={addressState.address1}
+              value={checkoutState.address1}
               label="Address line 1"
               fullWidth
               autoComplete="shipping address-line1"
@@ -80,7 +63,7 @@ export default function AddressForm({handleAddressSubmitStep, addressState}) {
               id="address2"
               name="address2"
               label="Address line 2"
-              value={addressState.address2}
+              value={checkoutState.address2}
               fullWidth
               autoComplete="shipping address-line2"
               variant="standard"
@@ -92,7 +75,7 @@ export default function AddressForm({handleAddressSubmitStep, addressState}) {
               required
               id="city"
               name="city"
-              value={addressState.city}
+              value={checkoutState.city}
               label="City"
               fullWidth
               autoComplete="shipping address-level2"
@@ -104,7 +87,7 @@ export default function AddressForm({handleAddressSubmitStep, addressState}) {
             <TextField
               id="state"
               name="state"
-              value={addressState.state}
+              value={checkoutState.state}
               label="State/Province/Region"
               fullWidth
               variant="standard"
@@ -116,7 +99,7 @@ export default function AddressForm({handleAddressSubmitStep, addressState}) {
               required
               id="zip"
               name="zip"
-              value={addressState.zip}
+              value={checkoutState.zip}
               label="Zip / Postal code"
               fullWidth
               autoComplete="shipping postal-code"
@@ -129,7 +112,7 @@ export default function AddressForm({handleAddressSubmitStep, addressState}) {
               required
               id="country"
               name="country"
-              value={addressState.country}
+              value={checkoutState.country}
               label="Country"
               fullWidth
               autoComplete="shipping country"
@@ -145,7 +128,6 @@ export default function AddressForm({handleAddressSubmitStep, addressState}) {
             />
           </Grid>
         </Grid>
-        <Button onClick={handleSubmit}>Save</Button>
       </React.Fragment>
     );
   }
