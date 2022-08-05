@@ -15,32 +15,42 @@ import Review from './Review';
 
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
-function getStepContent(step: number, cart, handleAddressSubmitStep, handlePaymentSubmitStep, addressState, paymentState) {
+function getStepContent(step, cart, handleFormChange, checkoutState) {
   switch (step) {
     case 0:
-      return <AddressForm handleAddressSubmitStep={handleAddressSubmitStep} addressState={addressState} />;
+      return <AddressForm checkoutState={checkoutState} handleFormChange={handleFormChange} />;
     case 1:
-      return <PaymentForm handlePaymentSubmitStep={handlePaymentSubmitStep} paymentState={paymentState} />;
+      return <PaymentForm checkoutState={checkoutState} handleFormChange={handleFormChange} />;
     case 2:
-      return <Review addressState={addressState} paymentState={paymentState} cart={cart}  />;
+      return <Review checkoutState={checkoutState} cart={cart}  />;
     default:
       throw new Error('Unknown step');
   }
 }
 
-
 export default function Checkout({cart}) {
   const [activeStep, setActiveStep] = useState(0);
-  const [addressState, setAddressState] = useState({})
-  const [paymentState, setPaymentState] = useState({})
+  const [checkoutState, setCheckoutState] = useState({
+    firstName: "",
+    lastName: "",
+    address1: "",
+    address2: "",
+    city: "",
+    state: "",
+    zip: "",
+    country: "",
+    saveAddress: false,
+    cardName: "",
+    cardNumber: "",
+    expDate: "",
+    cvv: ""
+  })
 
-  const handleAddressSubmitStep = (fields) => {
-    console.log(fields)
-    setAddressState(fields)
-  }
-
-  const handlePaymentSubmitStep = (fields) => {
-    setPaymentState(fields)
+  const handleFormChange = (event) => {
+    setCheckoutState({
+      ...checkoutState,
+      [event.target.name]: event.target.value
+    })
   }
 
   const handleNext = () => {
@@ -68,7 +78,7 @@ export default function Checkout({cart}) {
             {activeStep === steps.length ? (
               <React.Fragment>
                 <Typography variant="h5" gutterBottom>
-                  Thanks for your order, {addressState.firstName}.
+                  Thanks for your order, {checkoutState.firstName}.
                 </Typography>
                 <Typography variant="subtitle1">
                   Your order number is #2001539. We have emailed your order
@@ -78,7 +88,7 @@ export default function Checkout({cart}) {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                {getStepContent(activeStep, cart, handleAddressSubmitStep, handlePaymentSubmitStep, addressState, paymentState)}
+                {getStepContent(activeStep, cart, handleFormChange, checkoutState)}
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>

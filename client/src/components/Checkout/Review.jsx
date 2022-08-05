@@ -5,7 +5,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
   
-  export default function Review({cart, addressState, paymentState}) {
+  export default function Review({cart, checkoutState}) {
     const products = cart.items.map((i) => {
       return (
         {
@@ -16,12 +16,12 @@ import Grid from '@mui/material/Grid';
       )
     })
     
-    const addresses = [addressState.address1, addressState.city, addressState.state, addressState.zip, addressState.country];
+    const addresses = [checkoutState.address1, checkoutState.city, checkoutState.state, checkoutState.zip, checkoutState.country];
     const payments = [
       { name: 'Card type', detail: 'Visa' },
-      { name: 'Card holder', detail: paymentState.cardName },
-      { name: 'Card number', detail: paymentState.cardNumber },
-      { name: 'Expiry date', detail: paymentState.expDate },
+      { name: 'Card holder', detail: checkoutState.cardName },
+      { name: 'Card number', detail: checkoutState.cardNumber },
+      { name: 'Expiry date', detail: checkoutState.expDate },
     ];
     return (
       <React.Fragment>
@@ -48,7 +48,7 @@ import Grid from '@mui/material/Grid';
             <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
               Shipping
             </Typography>
-            <Typography gutterBottom>{addressState.firstName}</Typography>
+            <Typography gutterBottom>{checkoutState.firstName}</Typography>
             <Typography gutterBottom>{addresses.join(', ')}</Typography>
           </Grid>
           <Grid item container direction="column" xs={12} sm={6}>

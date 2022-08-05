@@ -7,22 +7,10 @@ import Button from '@mui/material/Button';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
-export default function PaymentForm({handlePaymentSubmitStep, paymentState}) {
-  const [fields, setFields] = useState({
-    cardName: "",
-    cardNumber: "",
-    expDate: "",
-    cvv: ""
-  })
-  const handleSubmit = () => {
-    handlePaymentSubmitStep(fields)
-  }
+export default function PaymentForm({handlePaymentSubmitStep, handleFormChange, checkoutState}) {
 
   const handleChange = (event) => {
-    setFields({
-      ...fields,
-      [event.target.id]: event.target.value
-    })
+    handleFormChange(event)
   }
 
   return (
@@ -34,49 +22,49 @@ export default function PaymentForm({handlePaymentSubmitStep, paymentState}) {
         <Grid item xs={12} md={6}>
           <TextField
             required
-            id="cardName"
+            name="cardName"
             label="Name on card"
             fullWidth
             autoComplete="cc-name"
             variant="standard"
-            value={paymentState.cardName}
+            value={checkoutState.cardName}
             onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
             required
-            id="cardNumber"
+            name="cardNumber"
             label="Card number"
             fullWidth
             autoComplete="cc-number"
             variant="standard"
-            value={paymentState.cardNumber}
+            value={checkoutState.cardNumber}
             onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
             required
-            id="expDate"
+            name="expDate"
             label="Expiry date"
             fullWidth
             autoComplete="cc-exp"
             variant="standard"
-            value={paymentState.expDate}
+            value={checkoutState.expDate}
             onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
             required
-            id="cvv"
+            name="cvv"
             label="CVV"
             helperText="Last three digits on signature strip"
             fullWidth
             autoComplete="cc-csc"
             variant="standard"
-            value={paymentState.cvv}
+            value={checkoutState.cvv}
             onChange={handleChange}
           />
         </Grid>
@@ -87,7 +75,6 @@ export default function PaymentForm({handlePaymentSubmitStep, paymentState}) {
           />
         </Grid>
       </Grid>
-      <Button onClick={handleSubmit}>Save</Button>
     </React.Fragment>
   );
 }
