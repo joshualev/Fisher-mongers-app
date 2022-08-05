@@ -8,9 +8,12 @@ A sign-in feature is provided for admin, which allows access to the database to 
 
 To view a live version of the app, please click [here](https://hooked-coop.herokuapp.com/)
 
-You can use the ample admin account details below to view full CRUD features:
-- username: demo
-- password: demo
+You can use the sample admin account details below to view full CRUD features:
+
+```
+username: demo
+password: demo
+```
 
 This app was built using:
 - MongoDB and Mongoose
@@ -94,6 +97,7 @@ The team decided to utilise the [React Hook Form](https://react-hook-form.com/) 
 #### Working with MUI 
 
 We decided to work with MUI to gain experience in the technology. While MUI provided a quick and clean solution to scaffold a simple structure for our app, the challenges began presenting themselves once our design features became more focused.
+
 ---
 
 ### Future Update Options
