@@ -6,11 +6,14 @@ Hooked is a MERN app designed to show and edit a collection of seafood items as 
 
 A sign-in feature is provided for admin, which allows access to the database to add, edit and delete items ([CRUD app](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) functionality). These features are not available when not logged in.
 
-To view a live version of the app, please click [here][insert link once deployed]
+To view a live version of the app, please click [here](https://hooked-coop.herokuapp.com/)
 
-You can use the ample admin account details below to view full CRUD features:
-- username: [insert once deployed]
-- password: [insert once deployed]
+You can use the sample admin account details below to view full CRUD features:
+
+```
+username: demo
+password: demo
+```
 
 This app was built using:
 - MongoDB and Mongoose
@@ -68,16 +71,16 @@ A cart component was created that allows users to add and remove items, provides
 Sample screenshots of the app:
 
 Sign In Page
-[insert once ready]
+![Sign In Page](./readme-images/Hooked%20-%20Sign%20In%20Vew.png)
 
-Home Page (index)
-[insert once ready]
+Home Page (index view)
+![Home Page](./readme-images/Hooked%20-%20Home%3AIndex%20View.png)
 
 Product Details Page (admin view)
-[insert once ready]
+![Product Page](./readme-images/Hooked%20-%20Details%20View.png)
 
 Checkout Page
-[insert once ready]
+![Checkout Page](./readme-images/Hooked%20-%20Checkout%20View.png)
 
 ---
 
@@ -85,7 +88,7 @@ Checkout Page
 
 #### Implementing Shopping Cart and Checkout Features
 
-[Dan, feel free to rant about how difficult it was to do this here.]
+Due to the short timeframe to develop the app (4 days) a a MUI checkout template was used for the checkout process. The design of the template used brought additional challenges in managing state and user input throughout the checkout process.
 
 #### Utilising React Packages
 
@@ -94,6 +97,7 @@ The team decided to utilise the [React Hook Form](https://react-hook-form.com/) 
 #### Working with MUI 
 
 We decided to work with MUI to gain experience in the technology. While MUI provided a quick and clean solution to scaffold a simple structure for our app, the challenges began presenting themselves once our design features became more focused.
+
 ---
 
 ### Future Update Options
