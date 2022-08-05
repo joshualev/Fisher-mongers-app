@@ -27,10 +27,15 @@ app.use(session({
 }))
 
 app.use(express.json())
+app.use(express.static(__dirname + "/client/build"))
+
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/users', usersController)
 app.use('/fish', fishController)
+app.get("*", (req, res) => {
+    res.sendFile(__dirname + "/client/build/index.html")
+})
 
 mongoose.connect(dbURL, () => {
     console.log('🐟', 'connected to fish db', '🐠')
