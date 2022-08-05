@@ -3,7 +3,6 @@ const express = require('express')
 const mongoose = require('mongoose')
 const session = require("express-session")
 const mongoDBSession = require("connect-mongodb-session")
-const cors = require('cors')
 
 const usersController = require("./controllers/Users")
 const fishController = require('./controllers/Fish')
@@ -27,23 +26,8 @@ app.use(session({
     }
 }))
 
-const whitelist = [
-    'http://localhost:4001'
-]
-
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
-app.use(cors({
-    origin: "*"
-}))
-    // // Replace above before deploying
-    // origin: (origin, cb) => {
-    //     if (whitelist.indexOf(origin) !== -1) {
-    //         cb(null, true)
-    //     } else {
-    //         cb(new Error())
-    //     }
-    // }
 
 app.use('/users', usersController)
 app.use('/fish', fishController)
