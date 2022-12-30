@@ -16,12 +16,14 @@ password: demo
 ```
 
 This app was built using:
+
 - MongoDB and Mongoose
 - Express
 - React JS
 - Node JS
 
 Other features include:
+
 - React-hook-form for form manipulation
 - bcrypt hashing for password storage and checking
 - Material UI components for styling and structure
@@ -96,14 +98,16 @@ The shopping cart state and manipulation was a challenge to build initially but 
 
 The team decided to utilise the [React Hook Form](https://react-hook-form.com/) and MUI packages for our app to gain experience and develop our skills in this area. Using both these packages presented additional challenges in some areas in drafting syntax and logic that would be recognised by each (as well as native React) to acheive the desired outcome.
 
-#### Working with MUI 
+#### Working with MUI
 
 We decided to work with MUI to gain experience in the technology. While MUI provided a quick and clean solution to scaffold a simple structure for our app, the challenges began presenting themselves once our design features became more focused.
 
 ---
 
 ### Future Update Options
+
 Potential Future updates for the app may include:
+
 - Implements user and admin profiles into the users model.
 - Additional product models (e.g. shellfish, pantry items)
 - Other ecommerce products in the product details (show) view based on the product that is current being viewed.

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const fishSchema = mongoose.Schema({
   species: { type: String, required: true },
@@ -6,9 +6,9 @@ const fishSchema = mongoose.Schema({
   imageURL: { type: String, default: "https://loremflickr.com/300/300/fish" },
   price: { type: Number, default: 0 },
   stock: { type: Number, default: 0 },
-  caughtBy: { type: String, default: "Unknown" }
-})
+  caughtBy: { type: String, default: "Unknown" },
+});
 
-const Fish = mongoose.model("Fish", fishSchema)
+const Fish = mongoose.model("Fish", fishSchema);
 
-module.exports = Fish
+module.exports = Fish;

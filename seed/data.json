@@ -19,7 +19,7 @@
     "species": "Barramundi",
     "description": "Also known as 'Asian Sea Bass', lightly flavoured and versatile for different cooking styles.",
     "imageURL": "https://res.cloudinary.com/dpk0o7ztt/image/upload/v1659393087/Barramundi_fillet_fkfy0j.webp",
-    "price":23.50,
+    "price": 23.5,
     "stock": 10,
     "caughtBy": "Pedro"
   },
