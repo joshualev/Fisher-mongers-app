@@ -9,7 +9,7 @@
     "build": "cd client && npm i && npm run build"
   },
   "engines": {
-    "node": "18.4.0"
+    "node": ">=14"
   },
   "author": "Dan, Evan, Josh",
   "license": "ISC",
