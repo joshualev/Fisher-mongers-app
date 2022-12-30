@@ -8,9 +8,8 @@ const usersController = require("./controllers/Users");
 const fishController = require("./controllers/Fish");
 
 const app = express();
-const PORT = process.env.PORT;
+// const PORT = process.env.PORT;
 
-console.log("port", PORT);
 const dbURL = process.env.MONGODB_URL;
 const MongoDBStore = mongoDBSession(session);
 const sessionStore = new MongoDBStore({
@@ -44,6 +43,6 @@ app.get("*", (req, res) => {
 mongoose.connect(dbURL, () => {
   console.log("🐟", "connected to fish db", "🐠");
 });
-app.listen(PORT, () => {
-  console.log("listening on port: ", PORT);
-});
+// app.listen(PORT, () => {
+//   console.log("listening on port: ", PORT);
+// });
