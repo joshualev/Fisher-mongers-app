@@ -1,7 +1,7 @@
 {
   "name": "api",
   "version": "1.0.0",
-  "proxy": "0.0.0.0:4000",
+  "proxy": "0.0.0.0:4001",
   "description": "Fish Mongers App",
   "main": "index.js",
   "scripts": {

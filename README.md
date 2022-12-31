@@ -108,10 +108,10 @@ We decided to work with MUI to gain experience in the technology. While MUI prov
 
 Potential Future updates for the app may include:
 
-- Implements user and admin profiles into the users model.
+- Implement user and admin profiles into the users model.
 - Additional product models (e.g. shellfish, pantry items)
 - Other ecommerce products in the product details (show) view based on the product that is current being viewed.
-- Integrate a recepies API, such as [spoonacular](https://spoonacular.com/food-api) or [edamam](https://developer.edamam.com/edamam-recipe-api) to provide recipie ideas based on the product viewed/selected.
+- Integrate a recepies API, such as [spoonacular](https://spoonacular.com/food-api) or [edamam](https://developer.edamam.com/edamam-recipe-api) to provide recipse ideas based on the product viewed/selected.
 - Maps integration to show the user where the fish being viewed was caught.
 - Fishmonger profile pages to help promote small local businesses and the sustainable fishing approach of the platform.
 - Relational date for the above, allowing the Fishmonger adding the item to be featured in the "Show" route, with added click-through to their profile.
