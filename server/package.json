@@ -5,8 +5,7 @@
   "description": "Fish Mongers App",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "build": "cd ../client && npm i && npm run build"
+    "start": "node index.js"
   },
   "engines": {
     "node": ">=14"
