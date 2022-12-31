@@ -31,14 +31,14 @@ app.use(
 );
 
 app.use(express.json());
-app.use(express.static("../client/build"));
+app.use(express.static(__dirname + "../client/build"));
 
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/users", usersController);
 app.use("/fish", fishController);
 app.get("*", (req, res) => {
-  res.sendFile("../client/build/index.html");
+  res.sendFile(__dirname + "/client/build/index.html");
 });
 
 mongoose.connect(dbURL, () => {
