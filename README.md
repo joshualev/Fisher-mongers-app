@@ -6,7 +6,8 @@ Hooked is a MERN app designed to show and edit a collection of seafood items as 
 
 A sign-in feature is provided for admin, which allows access to the database to add, edit and delete items ([CRUD app](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) functionality). These features are not available when not logged in.
 
-To view a live version of the app, please click [here](https://hooked-coop.herokuapp.com/)
+This application was deployed on Render.com.
+To view a live version of the app, please click [here](https://fish-mongers-api.onrender.com/)
 
 You can use the sample admin account details below to view full CRUD features:
 
